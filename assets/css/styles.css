@@ -1,0 +1,13 @@
+/* Basic utility classes & components */
+.btn { @apply px-4 py-2 rounded-lg bg-gray-900 text-white hover:opacity-90; }
+.btn-secondary { @apply px-4 py-2 rounded-lg border border-gray-300 bg-white hover:bg-gray-50; }
+.card { @apply block p-5 rounded-2xl border bg-white hover:shadow-md transition; }
+.card-title { @apply font-semibold text-lg; }
+.card-desc { @apply mt-1 text-sm text-gray-600; }
+.tag { @apply inline-block mt-3 mr-2 text-xs px-2 py-1 rounded-full bg-gray-100 border; }
+.chip { @apply inline-block text-xs px-2 py-1 rounded-full bg-gray-100 border; }
+.proj { @apply p-6 rounded-2xl border bg-white; }
+.proj-title { @apply text-xl font-semibold; }
+.proj-desc { @apply mt-1 text-gray-700; }
+.proj-meta { @apply mt-3 list-disc pl-5 text-sm text-gray-700 space-y-1; }
+.link { @apply underline hover:no-underline; }

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Your Name</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="sticky top-0 z-10 bg-white border-b">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-bold text-xl">Your Name</a>
+      <nav class="space-x-6 text-sm">
+        <a href="/projects" class="hover:underline font-semibold">Projects</a>
+        <a href="/about" class="hover:underline">About</a>
+        <a href="/contact" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4">
+    <section class="py-12">
+      <h1 class="text-3xl font-bold">Projects</h1>
+      <div class="mt-8 space-y-10">
+        <article id="lung-cancer" class="proj">
+          <h2 class="proj-title">Lung Cancer Prediction System</h2>
+          <p class="proj-desc">CT 업로드 → 전처리 → ML 예측 → UI. Django + React + ML 조합.</p>
+          <ul class="proj-meta">
+            <li>Stack: Python, Django, React, MariaDB, scikit-learn</li>
+            <li>Role: 백엔드/전처리/모델링</li>
+            <li>Links: <a href="#" class="link">Repo</a> · <a href="#" class="link">Demo</a> · <a href="#" class="link">Report</a></li>
+          </ul>
+        </article>
+
+        <article id="igo-duya" class="proj">
+          <h2 class="proj-title">Igo_duya (의료비 비교 플랫폼)</h2>
+          <p class="proj-desc">HIRA API/병원 가격 데이터 연동, 위치 기반 조회.</p>
+          <ul class="proj-meta">
+            <li>Stack: Python, Django REST, Map API</li>
+            <li>Role: 기획/데이터 파이프라인</li>
+            <li>Links: <a href="#" class="link">Repo</a> · <a href="#" class="link">Demo</a></li>
+          </ul>
+        </article>
+
+        <article id="sepsis" class="proj">
+          <h2 class="proj-title">Early Sepsis Prediction</h2>
+          <p class="proj-desc">표 데이터 기반 분류 모델(Scikit-learn). 성능/해석 가능성 강조.</p>
+          <ul class="proj-meta">
+            <li>Stack: Python, Pandas, scikit-learn</li>
+            <li>Role: 모델링/평가/시각화</li>
+            <li>Links: <a href="#" class="link">Repo</a> · <a href="#" class="link">Poster</a></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-16 border-t">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-600">
+      © <span id="year"></span> Your Name.
+    </div>
+  </footer>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

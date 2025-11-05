@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Your Name</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="sticky top-0 z-10 bg-white border-b">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/" class="font-bold text-xl">Your Name</a>
+      <nav class="space-x-6 text-sm">
+        <a href="/projects" class="hover:underline">Projects</a>
+        <a href="/about" class="hover:underline font-semibold">About</a>
+        <a href="/contact" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4">
+    <section class="py-12">
+      <h1 class="text-3xl font-bold">About Me</h1>
+      <p class="mt-4 text-gray-700">
+        Biomedical AI 개발자입니다. Python, Django, React, Flutter(학습 중), MariaDB를 다루며
+        의료영상과 공공데이터를 활용한 ML 프로젝트를 수행합니다.
+      </p>
+
+      <h2 class="mt-10 text-2xl font-semibold">타임라인</h2>
+      <ul class="mt-4 list-disc pl-6 space-y-2">
+        <li>2025 — 미래융합교육원 바이오메디컬 AI 과정 3기</li>
+        <li>2024 — Django/React 풀스택 학습 및 프로젝트 수행</li>
+        <li>그 외 — Python 자동화, 전처리 파이프라인 구축</li>
+      </ul>
+
+      <h2 class="mt-10 text-2xl font-semibold">기술 스택</h2>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class="chip">Python</span><span class="chip">Scikit-learn</span>
+        <span class="chip">Django</span><span class="chip">React</span>
+        <span class="chip">MariaDB</span><span class="chip">3D Slicer</span>
+        <span class="chip">Blender</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-16 border-t">
+    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-600">
+      © <span id="year"></span> Your Name.
+    </div>
+  </footer>
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
