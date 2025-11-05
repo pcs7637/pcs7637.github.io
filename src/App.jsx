@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Projects from './pages/Projects.jsx'
 import About, { ExperienceSection, SkillsSection } from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
@@ -19,9 +20,58 @@ const socialLinks = [
 export default function App() {
   const year = new Date().getFullYear()
 
+  useEffect(() => {
+    const root = document.documentElement
+
+    const updateSpotlight = (event) => {
+      root.style.setProperty('--spotlight-x', `${event.clientX}px`)
+      root.style.setProperty('--spotlight-y', `${event.clientY}px`)
+    }
+
+    const resetSpotlight = () => {
+      root.style.setProperty('--spotlight-x', '50vw')
+      root.style.setProperty('--spotlight-y', '50vh')
+    }
+
+    window.addEventListener('pointermove', updateSpotlight)
+    window.addEventListener('pointerleave', resetSpotlight)
+
+    return () => {
+      window.removeEventListener('pointermove', updateSpotlight)
+      window.removeEventListener('pointerleave', resetSpotlight)
+    }
+  }, [])
+
+  useEffect(() => {
+    const root = document.documentElement
+    let rafId
+
+    const updateParallax = () => {
+      rafId = null
+      root.style.setProperty('--bg-parallax', `${window.scrollY * 0.35}px`)
+    }
+
+    const handleScroll = () => {
+      if (rafId !== null) return
+      rafId = requestAnimationFrame(updateParallax)
+    }
+
+    updateParallax()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+      }
+    }
+  }, [])
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-200">
-      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-12 lg:flex-row lg:gap-24 lg:py-20">
+    <div className="relative min-h-screen bg-slate-950 text-slate-200">
+      <div className="background-layer" aria-hidden />
+      <div className="pointer-glow" aria-hidden />
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-12 px-6 py-12 lg:flex-row lg:gap-24 lg:py-20">
         <aside className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:w-72 lg:flex-none">
           <div className="flex h-full flex-col justify-between gap-10">
             <div className="space-y-6">
@@ -43,9 +93,12 @@ export default function App() {
                     <li key={item.id}>
                       <a
                         href={`#${item.id}`}
-                        className="group inline-flex items-center gap-3 text-slate-500 transition hover:text-teal-300"
+                        className="group inline-flex items-center gap-3 text-slate-500 transition-colors duration-300 hover:text-teal-300"
                       >
-                        <span className="h-px w-10 bg-slate-700 transition group-hover:bg-teal-400" aria-hidden />
+                        <span
+                          className="h-px w-10 origin-left rounded-full bg-slate-700 transition-all duration-300 group-hover:w-16 group-hover:bg-teal-400/80"
+                          aria-hidden
+                        />
                         {item.label}
                       </a>
                     </li>
@@ -77,7 +130,12 @@ export default function App() {
           <section className="lg:hidden">
             <nav className="mb-8 flex flex-wrap gap-4 text-sm font-medium text-slate-400">
               {navItems.map((item) => (
-                <a key={item.id} href={`#${item.id}`} className="transition hover:text-teal-300">
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className="group relative inline-flex items-center gap-2 transition-colors duration-300 hover:text-teal-300"
+                >
+                  <span className="h-px w-6 origin-left rounded-full bg-slate-700/70 transition-all duration-300 group-hover:w-10 group-hover:bg-teal-300/80" />
                   {item.label}
                 </a>
               ))}

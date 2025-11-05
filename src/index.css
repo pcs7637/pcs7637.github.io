@@ -4,6 +4,9 @@
 
 html {
   scroll-behavior: smooth;
+  --spotlight-x: 50vw;
+  --spotlight-y: 50vh;
+  --bg-parallax: 0px;
 }
 
 body {
@@ -13,4 +16,42 @@ body {
 
 a {
   @apply outline-none focus-visible:ring-2 focus-visible:ring-teal-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950;
+}
+
+.pointer-glow {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    320px at var(--spotlight-x) var(--spotlight-y),
+    rgba(148, 255, 230, 0.25),
+    rgba(15, 23, 42, 0.65)
+  );
+  mix-blend-mode: screen;
+  opacity: 1;
+  pointer-events: none;
+  transition: background 120ms ease;
+}
+
+.background-layer {
+  /* 페이지 전체를 덮는 백그라운드 레이어 */
+  position: absolute;
+  inset: 0;
+
+  /* 원본 이미지 위에 짙은 색상 그라데이션을 겹쳐서 분위기 연출 */
+  background:
+    linear-gradient(180deg, rgba(2, 6, 23, 0.8) 0%, rgba(2, 6, 23, 0.9) 55%, rgba(2, 6, 23, 0.94) 100%),
+    url('/assets/medical-bg2.png');
+
+  /* DNA가 오른쪽에 보이도록 세로 비율 위주로 확대 */
+  background-size: auto 90%;
+  background-position: left calc(-0.25em + var(--bg-parallax));
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+
+  /* 한층 더 어둡고 살짝 채도를 낮춘 느낌 */
+  filter: saturate(0.85) brightness(0.42) contrast(1.05);
+
+  /* 백그라운드만 시각적으로 보여 주고 인터랙션은 막음 */
+  pointer-events: none;
+  z-index: 0;
 }
