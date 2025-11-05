@@ -1,65 +1,13 @@
 <!doctype html>
-<html lang="ko">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>포트폴리오 | Your Name</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/assets/css/styles.css">
-</head>
-<body class="bg-gray-50 text-gray-900">
-  <header class="sticky top-0 z-10 bg-white border-b">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-      <a href="/" class="font-bold text-xl">Your Name</a>
-      <nav class="space-x-6 text-sm">
-        <a href="/projects" class="hover:underline">Projects</a>
-        <a href="/about" class="hover:underline">About</a>
-        <a href="/contact" class="hover:underline">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="max-w-5xl mx-auto px-4">
-    <section class="py-14">
-      <h1 class="hero-title">
-        <span class="gradient-text">MediMarryMeBiomedical</span>
-        <span class="block mt-2 text-gray-500 text-lg md:text-xl">AI 포트폴리오</span>
-      </h1>
-      <p class="mt-3 text-gray-700">데이터로 생명을 설계합니다. 의료영상, 공공데이터, 머신러닝으로 문제를 해결합니다.</p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a href="/projects" class="btn">대표 프로젝트 보기</a>
-        <a href="/about" class="btn-secondary">이력서/타임라인</a>
-      </div>
-    </section>
-
-    <section class="py-8">
-      <h2 class="text-2xl font-semibold">대표 프로젝트</h2>
-      <div class="mt-6 grid md:grid-cols-3 gap-6">
-        <a class="card" href="/projects#lung-cancer">
-          <h3 class="card-title">Lung Cancer Prediction</h3>
-          <p class="card-desc">CT 전처리 → ML 예측 → 웹 UI</p>
-          <span class="tag">Django</span> <span class="tag">React</span> <span class="tag">ML</span>
-        </a>
-        <a class="card" href="/projects#igo-duya">
-          <h3 class="card-title">Igo_duya</h3>
-          <p class="card-desc">의료비 비교 플랫폼, HIRA 연동</p>
-          <span class="tag">API</span> <span class="tag">Map</span>
-        </a>
-        <a class="card" href="/projects#sepsis">
-          <h3 class="card-title">Early Sepsis Prediction</h3>
-          <p class="card-desc">표 형식 데이터 → Scikit-learn</p>
-          <span class="tag">Python</span> <span class="tag">ML</span>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="mt-16 border-t">
-    <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-600">
-      © <span id="year"></span> Your Name. All rights reserved.
-    </div>
-  </footer>
-
-  <script src="/assets/js/main.js"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>temp-site</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

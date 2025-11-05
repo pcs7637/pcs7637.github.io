@@ -1,6 +1,27 @@
 /* Basic utility classes & components */
-.hero-title { @apply text-3xl md:text-5xl font-semibold tracking-tight text-gray-900 leading-tight; }
-.hero-title .gradient-text { @apply bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 bg-clip-text text-transparent; }
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 3.75rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: #0f172a;
+}
+
+.hero-title .gradient-text {
+  display: inline-block;
+  background: linear-gradient(90deg, #3b82f6 0%, #6366f1 50%, #34d399 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-title-subtext {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  color: #6b7280;
+  font-weight: 400;
+}
 .btn { @apply px-4 py-2 rounded-lg bg-gray-900 text-white hover:opacity-90; }
 .btn-secondary { @apply px-4 py-2 rounded-lg border border-gray-300 bg-white hover:bg-gray-50; }
 .card { @apply block p-5 rounded-2xl border bg-white hover:shadow-md transition; }
