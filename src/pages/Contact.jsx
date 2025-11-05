@@ -6,41 +6,43 @@ const channels = [
   },
   {
     heading: 'LinkedIn',
-    description: '경력과 프로젝트 하이라이트를 빠르게 살펴볼 수 있습니다.',
+    description: '경력과 프로젝트 하이라이트를 빠르게 확인할 수 있습니다.',
     value: 'linkedin.com/in/pcs7637',
   },
   {
     heading: 'GitHub',
-    description: '코드 히스토리와 실험 노트를 모두 공개합니다.',
+    description: '코드 히스토리와 실험 노트를 공개합니다.',
     value: 'github.com/pcs7637',
   },
 ]
 
 const availability = [
-  '리모트/하이브리드 형태의 협업 가능',
-  '의료 데이터 기반 ML 모델링 및 분석 컨설팅',
-  '워크샵, 사내 트레이닝, 해커톤 멘토링' ,
+  '리모트/하이브리드 협업 가능',
+  '의료 데이터 기반 ML 모델링·배포 컨설팅',
+  '워크샵, 사내 트레이닝, 해커톤 멘토링',
 ]
 
 export default function Contact() {
   return (
-    <div className="space-y-12">
-      <section className="rounded-3xl bg-white/90 p-8 shadow-sm ring-1 ring-slate-200">
-        <h2 className="text-2xl font-semibold text-slate-900">연락하기</h2>
-        <p className="mt-4 max-w-2xl text-base text-slate-600 leading-relaxed">
-          협업 제안이나 포트폴리오에 관한 질문이 있다면 언제든지 연락 주세요. 의료 데이터/AI 프로젝트의 설계와 고도화, 팀의 ML
-          역량 강화를 돕고 있습니다.
+    <section id="contact" className="scroll-mt-24 space-y-10">
+      <header className="space-y-2">
+        <div className="flex items-center gap-3">
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-teal-400">05</span>
+          <h2 className="text-3xl font-semibold text-slate-50">Contact</h2>
+        </div>
+        <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
+          협업 제안이나 포트폴리오 관련 문의는 언제든지 환영합니다. 실사용 의료 AI 프로젝트의 설계부터 고도화까지 함께합니다.
         </p>
-      </section>
+      </header>
 
-      <section className="grid gap-6 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-3">
         {channels.map((channel) => (
-          <div key={channel.heading} className="rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-sm">
-            <h3 className="text-lg font-semibold text-slate-900">{channel.heading}</h3>
-            <p className="mt-2 text-sm text-slate-600">{channel.description}</p>
+          <div key={channel.heading} className="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-6">
+            <h3 className="text-base font-semibold text-slate-200">{channel.heading}</h3>
+            <p className="mt-3 text-sm text-slate-400">{channel.description}</p>
             <a
               href={channel.heading === 'Email' ? `mailto:${channel.value}` : `https://${channel.value}`}
-              className="mt-4 inline-flex text-sm font-medium text-indigo-600 hover:text-indigo-500"
+              className="mt-5 inline-flex text-sm font-semibold text-teal-300 transition hover:text-teal-200"
               target={channel.heading === 'Email' ? undefined : '_blank'}
               rel="noreferrer"
             >
@@ -48,21 +50,21 @@ export default function Contact() {
             </a>
           </div>
         ))}
-      </section>
+      </div>
 
-      <section className="rounded-3xl bg-gradient-to-r from-indigo-500/10 via-sky-500/10 to-emerald-400/10 p-[1px]">
-        <div className="rounded-[calc(theme(borderRadius.3xl)-1px)] bg-white/95 p-8">
-          <h3 className="text-lg font-semibold text-slate-900">가능한 협업 형태</h3>
-          <ul className="mt-4 space-y-3 text-sm text-slate-600">
+      <div className="rounded-3xl border border-teal-400/20 bg-gradient-to-r from-teal-500/10 via-sky-500/10 to-indigo-500/10 p-[1px]">
+        <div className="rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-8">
+          <h3 className="text-base font-semibold text-teal-200">가능한 협업 형태</h3>
+          <ul className="mt-4 space-y-3 text-sm text-slate-300">
             {availability.map((item) => (
-              <li key={item} className="flex items-start gap-2">
-                <span className="mt-1 inline-block h-2 w-2 rounded-full bg-indigo-500"></span>
+              <li key={item} className="flex items-start gap-3">
+                <span className="mt-[7px] inline-block h-1.5 w-1.5 rounded-full bg-teal-300/80" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }
