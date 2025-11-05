@@ -1,4 +1,6 @@
 /* Basic utility classes & components */
+.hero-title { @apply text-3xl md:text-5xl font-semibold tracking-tight text-gray-900 leading-tight; }
+.hero-title .gradient-text { @apply bg-gradient-to-r from-blue-500 via-indigo-500 to-emerald-400 bg-clip-text text-transparent; }
 .btn { @apply px-4 py-2 rounded-lg bg-gray-900 text-white hover:opacity-90; }
 .btn-secondary { @apply px-4 py-2 rounded-lg border border-gray-300 bg-white hover:bg-gray-50; }
 .card { @apply block p-5 rounded-2xl border bg-white hover:shadow-md transition; }
