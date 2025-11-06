@@ -44,6 +44,41 @@ a {
   transition: background 120ms ease;
 }
 
+.intro-typewriter {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 2.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.intro-typewriter-text {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  white-space: pre;
+  text-shadow: 0 0 18px rgba(128, 217, 255, 0.45);
+}
+
+.intro-cursor {
+  display: inline-block;
+  width: 0.75ch;
+  height: 1.4em;
+  margin-left: 0.15em;
+  border-radius: 4px;
+  background: rgba(128, 217, 255, 0.85);
+  box-shadow: 0 0 16px rgba(128, 217, 255, 0.6);
+  animation: intro-cursor-blink 0.9s steps(2, start) infinite;
+}
+
+@keyframes intro-cursor-blink {
+  to {
+    opacity: 0;
+  }
+}
+
 .background-layer {
   /* 페이지 전체를 덮는 백그라운드 레이어 */
   position: absolute;

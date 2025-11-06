@@ -18,9 +18,12 @@ const socialLinks = [
   { label: 'Email', href: 'mailto:hello@pcs7637.dev' },
 ]
 
+const introMessage = '> Press Enter to Start'
+
 export default function App() {
   const year = new Date().getFullYear()
   const [hasEntered, setHasEntered] = useState(false)
+  const [typedMessage, setTypedMessage] = useState('')
 
   useEffect(() => {
     const root = document.documentElement
@@ -61,6 +64,29 @@ export default function App() {
   }, [hasEntered])
 
   const handleEnterClick = () => setHasEntered(true)
+
+  useEffect(() => {
+    if (hasEntered) return
+
+    let index = 0
+    setTypedMessage('')
+
+    let intervalId
+    const startDelay = setTimeout(() => {
+      intervalId = setInterval(() => {
+        index += 1
+        setTypedMessage(introMessage.slice(0, index))
+        if (index >= introMessage.length) {
+          clearInterval(intervalId)
+        }
+      }, 70)
+    }, 350)
+
+    return () => {
+      clearTimeout(startDelay)
+      if (intervalId) clearInterval(intervalId)
+    }
+  }, [hasEntered])
 
   useEffect(() => {
     if (hasEntered) {
@@ -116,7 +142,7 @@ export default function App() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="intro-panel group max-w-md space-y-5 rounded-3xl border border-medblue-soft/60 bg-slate-950/70 px-12 py-12 text-center shadow-medblue-glow"
+              className="intro-panel group max-w-lg space-y-5 rounded-3xl border border-medblue-soft/60 bg-slate-950/70 px-12 py-12 text-center shadow-medblue-glow"
             >
               <motion.div
                 className="flex items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-[0.55em] text-medblue-soft/70"
@@ -136,12 +162,13 @@ export default function App() {
                 MediMarryMe Biomedical
               </motion.p>
               <motion.div
-                className="intro-type text-3xl font-semibold tracking-tight text-medblue-bright"
+                className="intro-type intro-typewriter mx-auto text-[1.5rem] font-semibold tracking-tight text-medblue-bright"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.4 }}
               >
-                &gt; Press Enter to Start
+                <span className="intro-typewriter-text">{typedMessage || '\u00A0'}</span>
+                <span className="intro-cursor" aria-hidden />
               </motion.div>
               <motion.p
                 className="text-sm text-slate-300"
@@ -206,17 +233,17 @@ export default function App() {
                     ))}
                   </ul>
                 </nav>
+              </div>
+
+              <div className="space-y-3 text-sm text-slate-500">
                 <button
                   type="button"
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="mt-6 inline-flex items-center gap-3 rounded-full border border-slate-700/70 px-4 py-2 text-xs font-semibold text-slate-400 transition hover:border-medblue-bright/60 hover:text-medblue-bright"
+                  className="group inline-flex items-center gap-3 rounded-full border border-slate-700/70 px-4 py-2 text-xs font-semibold text-slate-400 transition hover:border-medblue-bright/60 hover:text-medblue-bright"
                 >
                   <span className="h-px w-10 bg-slate-700 transition group-hover:bg-medblue-bright/70" aria-hidden />
                   Back to Top
                 </button>
-              </div>
-
-              <div className="space-y-2 text-sm text-slate-500">
                 <div className="flex gap-4">
                   {socialLinks.map((link) => (
                     <a
