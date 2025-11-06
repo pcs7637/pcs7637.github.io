@@ -30,15 +30,23 @@ const timeline = [
 const skills = [
   {
     category: 'AI · ML',
-    items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'MLflow', 'Optuna'],
+    icons: ['python', 'r', 'jupyter', 'tensorflow', 'pytorch', 'numpy', 'pandas', 'sklearn', 'opencv'],
   },
   {
     category: 'MLOps · Backend',
-    items: ['FastAPI', 'Django', 'Docker', 'Airflow', 'AWS SageMaker'],
+    icons: ['django', 'drf', 'flask', 'fastapi', 'postgresql', 'mysql', 'sqlite', 'jwt', 'nginx', 'docker', 'kubernetes'],
   },
   {
     category: 'Data · Visualization',
-    items: ['PostgreSQL', 'Apache Spark', 'Great Expectations', 'Tableau', 'Superset'],
+    icons: ['react', 'vite', 'tailwind', 'javascript', 'html', 'css', 'flutter', 'dart', 'bootstrap'],
+  },
+  {
+    category: 'DevOps · Tools',
+    icons: ['git', 'github', 'vscode', 'pycharm', 'nodejs', 'npm', 'bash', 'terminal', 'windsurf'],
+  },
+  {
+    category: 'Creative · Media',
+    icons: ['finalcut', 'aftereffects', 'canva', 'figma', 'suno'],
   },
 ]
 
@@ -109,13 +117,17 @@ export function SkillsSection() {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-base font-semibold text-slate-200">{skill.category}</h3>
-            <ul className="mt-4 flex flex-wrap gap-2 text-xs text-slate-400">
-              {skill.items.map((item) => (
-                <li key={item} className="rounded-full border border-slate-700 bg-slate-950 px-3 py-1">
-                  {item}
-                </li>
+            <div className="mt-4 flex flex-wrap gap-3">
+              {skill.icons.map((icon) => (
+                <img
+                  key={icon}
+                  src={`https://skillicons.dev/icons?i=${icon}`}
+                  alt={icon}
+                  className="h-10 w-10 rounded-xl border border-slate-800/60 bg-slate-950/60 p-1 shadow-sm shadow-slate-950/40 transition hover:border-medblue-bright/50"
+                  loading="lazy"
+                />
               ))}
-            </ul>
+            </div>
           </motion.div>
         ))}
       </div>
