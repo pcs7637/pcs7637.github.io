@@ -115,7 +115,7 @@ export default function Projects() {
     <section id="projects" className="scroll-mt-24 space-y-12">
       <header className="space-y-3">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">01</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">04</span>
           <h2 className="text-3xl font-semibold text-slate-50">Projects</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
