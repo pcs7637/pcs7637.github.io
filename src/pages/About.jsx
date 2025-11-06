@@ -27,26 +27,83 @@ const timeline = [
   },
 ]
 
+const customIcons = {
+  jupyter: { src: '/assets/Jupyter_logo.svg.png', label: 'Jupyter' },
+  numpy: { src: '/assets/numpy.svg', label: 'NumPy' },
+  pandas: { src: '/assets/Pandas_logo.svg.png', label: 'Pandas' },
+  jwt: { src: '/assets/jwt.png', label: 'JWT' },
+  windsurf: { src: '/assets/windsurf.svg', label: 'Windsurf' },
+  finalcut: { src: '/assets/final-cut-pro-logo.png', label: 'Final Cut Pro' },
+  miricanvas: { src: '/assets/miricanvas.png', label: 'MiriCanvas' },
+  suno: { src: '/assets/suno-app-icon.png', label: 'Suno AI' },
+  canva: { src: '/assets/canva.png', label: 'Canva' },
+}
+
 const skills = [
   {
     category: 'AI · ML',
-    icons: ['python', 'r', 'jupyter', 'tensorflow', 'pytorch', 'numpy', 'pandas', 'sklearn', 'opencv'],
+    items: [
+      { type: 'icon', value: 'python', label: 'Python' },
+      { type: 'icon', value: 'r', label: 'R' },
+      { type: 'custom', value: 'jupyter', label: 'Jupyter' },
+      { type: 'icon', value: 'tensorflow', label: 'TensorFlow' },
+      { type: 'icon', value: 'pytorch', label: 'PyTorch' },
+      { type: 'custom', value: 'numpy', label: 'NumPy' },
+      { type: 'custom', value: 'pandas', label: 'Pandas' },
+      { type: 'icon', value: 'scikitlearn', label: 'scikit-learn' },
+      { type: 'icon', value: 'opencv', label: 'OpenCV' },
+    ],
   },
   {
     category: 'MLOps · Backend',
-    icons: ['django', 'drf', 'flask', 'fastapi', 'postgresql', 'mysql', 'sqlite', 'jwt', 'nginx', 'docker', 'kubernetes'],
+    items: [
+      { type: 'icon', value: 'django', label: 'Django' },
+      { type: 'icon', value: 'flask', label: 'Flask' },
+      { type: 'icon', value: 'fastapi', label: 'FastAPI' },
+      { type: 'icon', value: 'mysql', label: 'MySQL' },
+      { type: 'icon', value: 'sqlite', label: 'SQLite' },
+      { type: 'custom', value: 'jwt', label: 'JWT' },
+      { type: 'icon', value: 'nginx', label: 'Nginx' },
+      { type: 'icon', value: 'docker', label: 'Docker' },
+      { type: 'icon', value: 'kubernetes', label: 'Kubernetes' },
+    ],
   },
   {
-    category: 'Data · Visualization',
-    icons: ['react', 'vite', 'tailwind', 'javascript', 'html', 'css', 'flutter', 'dart', 'bootstrap'],
+    category: 'Frontend · UI',
+    items: [
+      { type: 'icon', value: 'react', label: 'React' },
+      { type: 'icon', value: 'vite', label: 'Vite' },
+      { type: 'icon', value: 'tailwind', label: 'Tailwind CSS' },
+      { type: 'icon', value: 'javascript', label: 'JavaScript' },
+      { type: 'icon', value: 'html', label: 'HTML' },
+      { type: 'icon', value: 'css', label: 'CSS' },
+      { type: 'icon', value: 'flutter', label: 'Flutter' },
+      { type: 'icon', value: 'dart', label: 'Dart' },
+      { type: 'icon', value: 'bootstrap', label: 'Bootstrap' },
+    ],
   },
   {
     category: 'DevOps · Tools',
-    icons: ['git', 'github', 'vscode', 'pycharm', 'nodejs', 'npm', 'bash', 'terminal', 'windsurf'],
+    items: [
+      { type: 'icon', value: 'git', label: 'Git' },
+      { type: 'icon', value: 'github', label: 'GitHub' },
+      { type: 'icon', value: 'vscode', label: 'VS Code' },
+      { type: 'icon', value: 'pycharm', label: 'PyCharm' },
+      { type: 'icon', value: 'nodejs', label: 'Node.js' },
+      { type: 'icon', value: 'npm', label: 'npm' },
+      { type: 'icon', value: 'bash', label: 'Bash' },
+      { type: 'custom', value: 'windsurf', label: 'Windsurf' },
+    ],
   },
   {
     category: 'Creative · Media',
-    icons: ['finalcut', 'aftereffects', 'canva', 'figma', 'suno'],
+    items: [
+      { type: 'custom', value: 'finalcut', label: 'Final Cut Pro' },
+      { type: 'icon', value: 'aftereffects', label: 'After Effects' },
+      { type: 'custom', value: 'canva', label: 'Canva' },
+      { type: 'custom', value: 'miricanvas', label: 'MiriCanvas' },
+      { type: 'custom', value: 'suno', label: 'Suno AI' },
+    ],
   },
 ]
 
@@ -106,7 +163,7 @@ export function SkillsSection() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 grid-cols-1">
         {skills.map((skill) => (
           <motion.div
             key={skill.category}
@@ -117,16 +174,42 @@ export function SkillsSection() {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-base font-semibold text-slate-200">{skill.category}</h3>
-            <div className="mt-4 flex flex-wrap gap-3">
-              {skill.icons.map((icon) => (
-                <img
-                  key={icon}
-                  src={`https://skillicons.dev/icons?i=${icon}`}
-                  alt={icon}
-                  className="h-10 w-10 rounded-xl border border-slate-800/60 bg-slate-950/60 p-1 shadow-sm shadow-slate-950/40 transition hover:border-medblue-bright/50"
-                  loading="lazy"
-                />
-              ))}
+            <div className="mt-4 flex flex-wrap gap-4">
+              {skill.items.map((item) => {
+                const key = item.value ?? item.label
+                const displayLabel = item.label ?? customIcons[item.value]?.label ?? item.value
+
+                if (item.type === 'icon') {
+                  return (
+                    <div key={key} className="skill-item">
+                      <span className="skill-icon">
+                        <img
+                          src={`https://skillicons.dev/icons?i=${item.value}`}
+                          alt={displayLabel}
+                          className="skill-icon__img"
+                          loading="lazy"
+                        />
+                      </span>
+                      <span className="skill-label">{displayLabel}</span>
+                    </div>
+                  )
+                }
+
+                if (item.type === 'custom') {
+                  const custom = customIcons[item.value]
+                  if (!custom) return null
+                  return (
+                    <div key={key} className="skill-item">
+                      <span className="skill-icon skill-icon--custom">
+                        <img src={custom.src} alt={displayLabel} className="skill-icon__img" loading="lazy" />
+                      </span>
+                      <span className="skill-label">{displayLabel}</span>
+                    </div>
+                  )
+                }
+
+                return null
+              })}
             </div>
           </motion.div>
         ))}

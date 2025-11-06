@@ -206,13 +206,16 @@ export default function App() {
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-medblue-soft/80">
                   Biomedical AI 포트폴리오
                 </p>
-                <h1 className="text-4xl font-semibold tracking-tight text-slate-50">pcs7637</h1>
+                <h1 className="text-4xl font-semibold tracking-tight text-slate-50">박철순</h1>
                 <h2 className="text-xl font-medium text-slate-300">
-                  의료 데이터를 통해 생명을 살리는 머신러닝 엔지니어
+                  데이터로 생명을 읽고,
+                  <br />
+                  예측하는 사람
                 </h2>
                 <p className="text-sm leading-relaxed text-slate-400">
-                  의료영상, 공공데이터, 실시간 추론 파이프라인 경험을 바탕으로 문제 정의부터 배포·운영까지 전 과정을 리드합니다.
-                  연구와 프로덕트를 넘나들며 신뢰성 있는 AI를 구축합니다.
+                  의료현장의 문제를 데이터로 정의하고, AI로 해석합니다. 공공데이터와 의료영상을 연결해,
+                  <br />
+                  “사람의 생명”을 중심에 둔 인공지능을 만듭니다.
                 </p>
 
                 <nav className="hidden lg:block">
