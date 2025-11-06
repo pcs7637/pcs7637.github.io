@@ -68,7 +68,7 @@ import { motion } from 'framer-motion'
 function ProjectItem({ project }) {
   return (
     <motion.article
-      className="group rounded-3xl border border-slate-800/80 bg-slate-900/60 p-8 transition duration-200 hover:-translate-y-1 hover:border-teal-400/60 hover:bg-slate-900/80"
+      className="group rounded-3xl border border-slate-800/80 bg-slate-900/60 p-8 transition duration-200 hover:-translate-y-1 hover:border-medblue-bright/60 hover:bg-slate-900/80"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.2 }}
@@ -76,10 +76,10 @@ function ProjectItem({ project }) {
     >
       <header className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
         <h3 className="text-xl font-semibold text-slate-100">{project.title}</h3>
-        <div className="flex gap-4 text-sm font-medium text-teal-300">
+        <div className="flex gap-4 text-sm font-medium text-medblue-bright">
           <a
             href={project.links.demo}
-            className="inline-flex items-center gap-1 transition hover:text-teal-200"
+            className="inline-flex items-center gap-1 transition hover:text-medblue-soft"
             target="_blank"
             rel="noreferrer"
           >
@@ -87,7 +87,7 @@ function ProjectItem({ project }) {
           </a>
           <a
             href={project.links.repo}
-            className="inline-flex items-center gap-1 text-slate-400 transition hover:text-teal-200"
+            className="inline-flex items-center gap-1 text-slate-400 transition hover:text-medblue-soft"
             target="_blank"
             rel="noreferrer"
           >
@@ -115,7 +115,7 @@ export default function Projects() {
     <section id="projects" className="scroll-mt-24 space-y-12">
       <header className="space-y-3">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-teal-400">01</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">01</span>
           <h2 className="text-3xl font-semibold text-slate-50">Projects</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">

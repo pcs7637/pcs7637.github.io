@@ -29,7 +29,7 @@ export default function Contact() {
     <section id="contact" className="scroll-mt-24 space-y-10">
       <header className="space-y-2">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-teal-400">05</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">05</span>
           <h2 className="text-3xl font-semibold text-slate-50">Contact</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
@@ -51,7 +51,7 @@ export default function Contact() {
             <p className="mt-3 text-sm text-slate-400">{channel.description}</p>
             <a
               href={channel.heading === 'Email' ? `mailto:${channel.value}` : `https://${channel.value}`}
-              className="mt-5 inline-flex text-sm font-semibold text-teal-300 transition hover:text-teal-200"
+              className="mt-5 inline-flex text-sm font-semibold text-medblue-bright transition hover:text-medblue-soft"
               target={channel.heading === 'Email' ? undefined : '_blank'}
               rel="noreferrer"
             >
@@ -62,18 +62,18 @@ export default function Contact() {
       </div>
 
       <motion.div
-        className="rounded-3xl border border-teal-400/20 bg-gradient-to-r from-teal-500/10 via-sky-500/10 to-indigo-500/10 p-[1px]"
+        className="rounded-3xl border border-medblue-bright/20 bg-gradient-to-r from-medblue-dark/20 via-medblue/15 to-medblue-soft/10 p-[1px]"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <div className="rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-8">
-          <h3 className="text-base font-semibold text-teal-200">가능한 협업 형태</h3>
+          <h3 className="text-base font-semibold text-medblue-bright">가능한 협업 형태</h3>
           <ul className="mt-4 space-y-3 text-sm text-slate-300">
             {availability.map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <span className="mt-[7px] inline-block h-1.5 w-1.5 rounded-full bg-teal-300/80" />
+                <span className="mt-[7px] inline-block h-1.5 w-1.5 rounded-full bg-medblue-bright/80" />
                 <span>{item}</span>
               </li>
             ))}

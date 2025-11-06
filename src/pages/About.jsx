@@ -47,7 +47,7 @@ export function ExperienceSection() {
     <section id="experience" className="scroll-mt-24 space-y-8">
       <header className="space-y-2">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-teal-400">02</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">02</span>
           <h2 className="text-3xl font-semibold text-slate-50">Experience</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
@@ -65,15 +65,15 @@ export function ExperienceSection() {
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="absolute -left-[34px] top-6 block h-3 w-3 rounded-full border border-teal-300 bg-slate-950" />
-            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-teal-300/90">
+            <span className="absolute -left-[34px] top-6 block h-3 w-3 rounded-full border border-medblue-bright bg-slate-950" />
+            <div className="text-xs font-semibold uppercase tracking-[0.25em] text-medblue-soft/90">
               {entry.period}
             </div>
             <h3 className="mt-3 text-lg font-semibold text-slate-100">{entry.role}</h3>
             <ul className="mt-4 space-y-2 text-sm text-slate-400">
               {entry.bullets.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <span className="mt-[7px] inline-block h-1.5 w-1.5 rounded-full bg-teal-300/70" />
+                  <span className="mt-[7px] inline-block h-1.5 w-1.5 rounded-full bg-medblue-bright/70" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -90,7 +90,7 @@ export function SkillsSection() {
     <section id="skills" className="scroll-mt-24 space-y-8">
       <header className="space-y-2">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-teal-400">03</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">03</span>
           <h2 className="text-3xl font-semibold text-slate-50">Skills</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
@@ -128,7 +128,7 @@ export default function AboutSection() {
     <section id="about" className="scroll-mt-24 space-y-8">
       <header className="space-y-2">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-teal-400">04</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">04</span>
           <h2 className="text-3xl font-semibold text-slate-50">About</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
@@ -141,8 +141,9 @@ export default function AboutSection() {
           className="space-y-4 rounded-3xl border border-slate-800/70 bg-slate-900/60 p-8"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: false, amount: 0.3 }}
-                      transition={{ duration: 0.6 }}        >
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
           <p className="text-sm leading-relaxed text-slate-300">
             컴퓨터 비전과 임상 데이터 분석 경험을 바탕으로, 모델 개발에서 배포·모니터링까지 이어지는 ML 시스템을 설계합니다.
             의료기관과 협업하며 실제 환자 케어에 도움이 되는 기능을 우선시하고, 복잡한 데이터 환경을 정돈해 실험 속도를 높입니다.
@@ -154,14 +155,14 @@ export default function AboutSection() {
         </motion.article>
 
         <motion.aside
-          className="rounded-3xl border border-teal-400/20 bg-gradient-to-br from-teal-500/10 via-sky-500/10 to-indigo-500/10 p-[1px]"
+          className="rounded-3xl border border-medblue-bright/20 bg-gradient-to-br from-medblue-dark/20 via-medblue/15 to-medblue-soft/10 p-[1px]"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.15 }}
         >
           <div className="h-full rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-6">
-            <h3 className="text-base font-semibold text-teal-200">핵심 역량</h3>
+            <h3 className="text-base font-semibold text-medblue-bright">핵심 역량</h3>
             <ul className="mt-4 space-y-3 text-sm text-slate-300">
               <li>의료영상 + 임상 데이터 융합 파이프라인 설계</li>
               <li>배포 후 성능 추적을 고려한 MLOps 아키텍처 설계</li>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 import Projects from './pages/Projects.jsx'
 import About, { ExperienceSection, SkillsSection } from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
@@ -62,6 +63,12 @@ export default function App() {
   const handleEnterClick = () => setHasEntered(true)
 
   useEffect(() => {
+    if (hasEntered) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [hasEntered])
+
+  useEffect(() => {
     const root = document.documentElement
     let rafId
 
@@ -101,22 +108,58 @@ export default function App() {
           <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-sm" />
           <div className="intro-gradient" aria-hidden />
           <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-            <button
+            <motion.button
               type="button"
               onClick={handleEnterClick}
-              className="group max-w-md space-y-5 rounded-3xl border border-teal-300/50 bg-slate-950/65 px-12 py-12 shadow-[0_25px_70px_-25px_rgba(45,212,191,0.45)] transition duration-500 hover:border-teal-200/80 hover:bg-slate-900/70"
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+              className="intro-panel group max-w-md space-y-5 rounded-3xl border border-medblue-soft/60 bg-slate-950/70 px-12 py-12 text-center shadow-medblue-glow"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.45em] text-teal-200/80">
+              <motion.div
+                className="flex items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-[0.55em] text-medblue-soft/70"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-medblue-bright/80 animate-ping" aria-hidden />
+                System Online
+              </motion.div>
+              <motion.p
+                className="text-xs uppercase tracking-[0.35em] text-medblue-soft/80"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.25 }}
+              >
                 MediMarryMe Biomedical
-              </p>
-              <h1 className="text-4xl font-semibold tracking-tight text-slate-50 drop-shadow-[0_14px_18px_rgba(15,23,42,0.5)]">
-                Press Enter to Start
-              </h1>
-              <p className="text-sm text-slate-300">- 시작하려면 엔터 키를 누르세요 -</p>
-              <span className="block text-xs text-teal-200/80 transition group-hover:text-teal-100">
+              </motion.p>
+              <motion.div
+                className="intro-type text-3xl font-semibold tracking-tight text-medblue-bright"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: 0.4 }}
+              >
+                &gt; Press Enter to Start
+              </motion.div>
+              <motion.p
+                className="text-sm text-slate-300"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.55 }}
+              >
+                - 시작하려면 엔터 키를 누르세요 -
+              </motion.p>
+              <motion.span
+                className="block text-xs text-medblue-soft/80 transition group-hover:text-medblue-bright"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.7 }}
+              >
                 or click anywhere inside this panel
-              </span>
-            </button>
+              </motion.span>
+            </motion.button>
           </div>
         </div>
       )}
@@ -133,7 +176,7 @@ export default function App() {
           <aside className="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] lg:w-72 lg:flex-none">
             <div className="flex h-full flex-col justify-between gap-10">
               <div className="space-y-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-teal-400/80">
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-medblue-soft/80">
                   Biomedical AI 포트폴리오
                 </p>
                 <h1 className="text-4xl font-semibold tracking-tight text-slate-50">pcs7637</h1>
@@ -151,10 +194,10 @@ export default function App() {
                       <li key={item.id}>
                         <a
                           href={`#${item.id}`}
-                          className="group inline-flex items-center gap-3 text-slate-500 transition-colors duration-300 hover:text-teal-300"
+                          className="group inline-flex items-center gap-3 text-slate-500 transition-colors duration-300 hover:text-medblue-bright"
                         >
                           <span
-                            className="h-px w-10 origin-left rounded-full bg-slate-700 transition-all duration-300 group-hover:w-16 group-hover:bg-teal-400/80"
+                            className="h-px w-10 origin-left rounded-full bg-slate-700 transition-all duration-300 group-hover:w-16 group-hover:bg-medblue-bright/80"
                             aria-hidden
                           />
                           {item.label}
@@ -163,6 +206,14 @@ export default function App() {
                     ))}
                   </ul>
                 </nav>
+                <button
+                  type="button"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="mt-6 inline-flex items-center gap-3 rounded-full border border-slate-700/70 px-4 py-2 text-xs font-semibold text-slate-400 transition hover:border-medblue-bright/60 hover:text-medblue-bright"
+                >
+                  <span className="h-px w-10 bg-slate-700 transition group-hover:bg-medblue-bright/70" aria-hidden />
+                  Back to Top
+                </button>
               </div>
 
               <div className="space-y-2 text-sm text-slate-500">
@@ -171,7 +222,7 @@ export default function App() {
                     <a
                       key={link.label}
                       href={link.href}
-                      className="text-teal-300 transition hover:text-teal-200"
+                      className="text-medblue-bright transition hover:text-medblue-soft"
                       target={link.href.startsWith('http') ? '_blank' : undefined}
                       rel="noreferrer"
                     >
@@ -191,9 +242,9 @@ export default function App() {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className="group relative inline-flex items-center gap-2 transition-colors duration-300 hover:text-teal-300"
+                    className="group relative inline-flex items-center gap-2 transition-colors duration-300 hover:text-medblue-bright"
                   >
-                    <span className="h-px w-6 origin-left rounded-full bg-slate-700/70 transition-all duration-300 group-hover:w-10 group-hover:bg-teal-300/80" />
+                    <span className="h-px w-6 origin-left rounded-full bg-slate-700/70 transition-all duration-300 group-hover:w-10 group-hover:bg-medblue-bright/80" />
                     {item.label}
                   </a>
                 ))}
