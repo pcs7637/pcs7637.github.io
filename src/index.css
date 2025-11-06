@@ -18,6 +18,18 @@ a {
   @apply outline-none focus-visible:ring-2 focus-visible:ring-teal-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950;
 }
 
+.intro-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 40%,
+    rgba(45, 212, 191, 0.25),
+    rgba(15, 23, 42, 0) 55%
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
 .pointer-glow {
   position: fixed;
   inset: 0;

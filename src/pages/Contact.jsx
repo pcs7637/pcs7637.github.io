@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 const channels = [
   {
     heading: 'Email',
@@ -36,8 +38,15 @@ export default function Contact() {
       </header>
 
       <div className="grid gap-4 md:grid-cols-3">
-        {channels.map((channel) => (
-          <div key={channel.heading} className="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-6">
+        {channels.map((channel, i) => (
+          <motion.div
+            key={channel.heading}
+            className="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-6"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+          >
             <h3 className="text-base font-semibold text-slate-200">{channel.heading}</h3>
             <p className="mt-3 text-sm text-slate-400">{channel.description}</p>
             <a
@@ -48,11 +57,17 @@ export default function Contact() {
             >
               {channel.value}
             </a>
-          </div>
+          </motion.div>
         ))}
       </div>
 
-      <div className="rounded-3xl border border-teal-400/20 bg-gradient-to-r from-teal-500/10 via-sky-500/10 to-indigo-500/10 p-[1px]">
+      <motion.div
+        className="rounded-3xl border border-teal-400/20 bg-gradient-to-r from-teal-500/10 via-sky-500/10 to-indigo-500/10 p-[1px]"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         <div className="rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-8">
           <h3 className="text-base font-semibold text-teal-200">가능한 협업 형태</h3>
           <ul className="mt-4 space-y-3 text-sm text-slate-300">
@@ -64,7 +79,7 @@ export default function Contact() {
             ))}
           </ul>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

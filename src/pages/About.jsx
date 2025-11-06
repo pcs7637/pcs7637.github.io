@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion'
+
 const timeline = [
   {
     period: '2025',
@@ -55,7 +57,14 @@ export function ExperienceSection() {
 
       <div className="relative space-y-6 border-l border-slate-800/80 pl-6">
         {timeline.map((entry) => (
-          <article key={entry.period} className="relative rounded-3xl border border-slate-800/60 bg-slate-900/60 p-6 shadow-lg shadow-slate-950/40">
+          <motion.article
+            key={entry.period}
+            className="relative rounded-3xl border border-slate-800/60 bg-slate-900/60 p-6 shadow-lg shadow-slate-950/40"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
             <span className="absolute -left-[34px] top-6 block h-3 w-3 rounded-full border border-teal-300 bg-slate-950" />
             <div className="text-xs font-semibold uppercase tracking-[0.25em] text-teal-300/90">
               {entry.period}
@@ -69,7 +78,7 @@ export function ExperienceSection() {
                 </li>
               ))}
             </ul>
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>
@@ -91,7 +100,14 @@ export function SkillsSection() {
 
       <div className="grid gap-4 sm:grid-cols-2">
         {skills.map((skill) => (
-          <div key={skill.category} className="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-6">
+          <motion.div
+            key={skill.category}
+            className="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-6"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
+          >
             <h3 className="text-base font-semibold text-slate-200">{skill.category}</h3>
             <ul className="mt-4 flex flex-wrap gap-2 text-xs text-slate-400">
               {skill.items.map((item) => (
@@ -100,7 +116,7 @@ export function SkillsSection() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -121,7 +137,12 @@ export default function AboutSection() {
       </header>
 
       <div className="grid gap-6 lg:grid-cols-[1.6fr,1fr]">
-        <article className="space-y-4 rounded-3xl border border-slate-800/70 bg-slate-900/60 p-8">
+        <motion.article
+          className="space-y-4 rounded-3xl border border-slate-800/70 bg-slate-900/60 p-8"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: false, amount: 0.3 }}
+                      transition={{ duration: 0.6 }}        >
           <p className="text-sm leading-relaxed text-slate-300">
             컴퓨터 비전과 임상 데이터 분석 경험을 바탕으로, 모델 개발에서 배포·모니터링까지 이어지는 ML 시스템을 설계합니다.
             의료기관과 협업하며 실제 환자 케어에 도움이 되는 기능을 우선시하고, 복잡한 데이터 환경을 정돈해 실험 속도를 높입니다.
@@ -130,9 +151,15 @@ export default function AboutSection() {
             소규모 스타트업부터 대형 병원 연구실까지 다양한 팀과 협업하며 기술 의사결정을 리드했으며, 프로덕트와 연구를 연결해
             임상 현장에 바로 적용 가능한 결과를 도출하는 것에 집중하고 있습니다.
           </p>
-        </article>
+        </motion.article>
 
-        <aside className="rounded-3xl border border-teal-400/20 bg-gradient-to-br from-teal-500/10 via-sky-500/10 to-indigo-500/10 p-[1px]">
+        <motion.aside
+          className="rounded-3xl border border-teal-400/20 bg-gradient-to-br from-teal-500/10 via-sky-500/10 to-indigo-500/10 p-[1px]"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
           <div className="h-full rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-6">
             <h3 className="text-base font-semibold text-teal-200">핵심 역량</h3>
             <ul className="mt-4 space-y-3 text-sm text-slate-300">
@@ -141,7 +168,7 @@ export default function AboutSection() {
               <li>원내·공공 데이터를 활용한 정책/비즈니스 인사이트 도출</li>
             </ul>
           </div>
-        </aside>
+        </motion.aside>
       </div>
     </section>
   )

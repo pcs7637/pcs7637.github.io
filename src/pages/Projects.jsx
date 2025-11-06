@@ -63,9 +63,17 @@ const projectGroups = [
   },
 ]
 
+import { motion } from 'framer-motion'
+
 function ProjectItem({ project }) {
   return (
-    <article className="group rounded-3xl border border-slate-800/80 bg-slate-900/60 p-8 transition duration-200 hover:-translate-y-1 hover:border-teal-400/60 hover:bg-slate-900/80">
+    <motion.article
+      className="group rounded-3xl border border-slate-800/80 bg-slate-900/60 p-8 transition duration-200 hover:-translate-y-1 hover:border-teal-400/60 hover:bg-slate-900/80"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.6 }}
+    >
       <header className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
         <h3 className="text-xl font-semibold text-slate-100">{project.title}</h3>
         <div className="flex gap-4 text-sm font-medium text-teal-300">
@@ -98,7 +106,7 @@ function ProjectItem({ project }) {
           </span>
         ))}
       </div>
-    </article>
+    </motion.article>
   )
 }
 
