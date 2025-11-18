@@ -37,6 +37,7 @@ const customIcons = {
   miricanvas: { src: '/assets/miricanvas.png', label: 'MiriCanvas' },
   suno: { src: '/assets/suno-app-icon.png', label: 'Suno AI' },
   canva: { src: '/assets/canva.png', label: 'Canva' },
+  mariadb: { src: '/assets/mariadb.png', label: 'MariaDB' },
 }
 
 const skills = [
@@ -55,31 +56,15 @@ const skills = [
     ],
   },
   {
-    category: 'MLOps · Backend',
+    category: 'Supporting Skills',
     items: [
-      { type: 'icon', value: 'django', label: 'Django' },
-      { type: 'icon', value: 'flask', label: 'Flask' },
-      { type: 'icon', value: 'fastapi', label: 'FastAPI' },
-      { type: 'icon', value: 'mysql', label: 'MySQL' },
-      { type: 'icon', value: 'sqlite', label: 'SQLite' },
-      { type: 'custom', value: 'jwt', label: 'JWT' },
-      { type: 'icon', value: 'nginx', label: 'Nginx' },
-      { type: 'icon', value: 'docker', label: 'Docker' },
-      { type: 'icon', value: 'kubernetes', label: 'Kubernetes' },
-    ],
-  },
-  {
-    category: 'Frontend · UI',
-    items: [
-      { type: 'icon', value: 'react', label: 'React' },
-      { type: 'icon', value: 'vite', label: 'Vite' },
-      { type: 'icon', value: 'tailwind', label: 'Tailwind CSS' },
-      { type: 'icon', value: 'javascript', label: 'JavaScript' },
       { type: 'icon', value: 'html', label: 'HTML' },
       { type: 'icon', value: 'css', label: 'CSS' },
-      { type: 'icon', value: 'flutter', label: 'Flutter' },
-      { type: 'icon', value: 'dart', label: 'Dart' },
       { type: 'icon', value: 'bootstrap', label: 'Bootstrap' },
+      { type: 'icon', value: 'django', label: 'Django' },
+      { type: 'icon', value: 'react', label: 'React' },
+      { type: 'icon', value: 'mysql', label: 'MySQL' },
+      { type: 'custom', value: 'mariadb', label: 'MariaDB' },
     ],
   },
   {
@@ -152,7 +137,7 @@ export function ExperienceSection() {
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="scroll-mt-24 space-y-8">
+    <section id="skills" className="scroll-mt-24 space-y-4">
       <header className="space-y-2">
         <div className="flex items-center gap-3">
           <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">03</span>
@@ -163,21 +148,26 @@ export function SkillsSection() {
         </p>
       </header>
 
-      <div className="grid gap-4 grid-cols-1">
+      <div className="grid gap-2 grid-cols-1">
         {skills.map((skill) => (
           <motion.div
             key={skill.category}
-            className="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-6"
+            className="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-4"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-base font-semibold text-slate-200">{skill.category}</h3>
-            <div className="mt-4 flex flex-wrap gap-4">
+            <div className="mt-2 flex flex-wrap gap-4">
               {skill.items.map((item) => {
                 const key = item.value ?? item.label
                 const displayLabel = item.label ?? customIcons[item.value]?.label ?? item.value
+
+                // content가 직접 정의된 경우 (MariaDB 같은 특수 케이스)
+                if (item.content) {
+                  return <div key={key}>{item.content}</div>
+                }
 
                 if (item.type === 'icon') {
                   return (
@@ -201,7 +191,16 @@ export function SkillsSection() {
                   return (
                     <div key={key} className="skill-item">
                       <span className="skill-icon skill-icon--custom">
-                        <img src={custom.src} alt={displayLabel} className="skill-icon__img" loading="lazy" />
+                        <img 
+                          src={custom.src} 
+                          alt={displayLabel} 
+                          className="skill-icon__img" 
+                          loading="lazy"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMTEuOTk5IDFjLTIuMjE3IDAtNC4zMzQuMzU4LTYuMjUxLjk5NnYxOS4zM2MxLjg5LS42MTYgMy43NDItLjk5IDUuNzY0LS45OSAzLjQ3OCAwIDEwLjU2NiAyLjgxMyAxMC41NjYgMy4yNTMgMCAuNDQxLTUuMDg4IDMuNzM3LTEwLjU2NiAzLjczNy0yLjAyIDAtMy44NzUtLjM3NC01Ljc2NS0uOTl2LTE5LjMzdjEuODg5LjYxNiAzLjc0My45OSA1Ljc2NS45OWguMDEzYzEuNzIzIDAgMy4yNzMtLjM0IDUuMTU0LS42ODYuMTEzLjAwNi4yMjYuMDEyLjM0Mi4wMTIgMi4yMTcgMCA0LjMzNC4zNTggNi4yNTEuOTk2djE5LjMzYy0xLjg5LS42MTYtMy43NDItLjk5LTUuNzY0LS45OS01LjQ3OCAwLTEwLjU2NiAyLjgxMy0xMC41NjYgMy4yNTMgMCAuNDQxIDUuMDg4IDMuNzM3IDEwLjU2NiAzLjczNyAyLjAyMSAwIDMuODc1LS4zNzQgNS43NjUtLjk5VjEuOTk2Yy0xLjg4OS42MTYtMy43NDMuOTktNS43NjUuOTloLS4wMTNjLTEuNzIzIDAtMy4yNzMtLjM0LTUuMTU0LS42ODYtLjExMy4wMDYtLjIyNi4wMTItLjM0Mi4wMTJaIi8+PC9zdmc+';
+                          }}
+                        />
                       </span>
                       <span className="skill-label">{displayLabel}</span>
                     </div>
