@@ -1,59 +1,33 @@
 const projectGroups = [
   {
     heading: '대표 프로젝트',
-    blurb: '실제 프로덕션 또는 상용화를 목표로 진행한 핵심 작업들입니다.',
+    blurb: '건양대학교병원 바이오메디컬 AI 과정에서 수행한 핵심 프로젝트들입니다.',
     items: [
-      {
-        id: 'lung-cancer',
-        title: 'Lung Cancer Prediction',
-        description: 'CT 영상 전처리에서 모델 추론, 웹 UI까지 이어지는 엔드-투-엔드 파이프라인을 구축했습니다.',
-        tags: ['Django', 'React', 'Machine Learning'],
-        links: {
-          demo: 'https://github.com/pcs7637/lung-cancer-prediction-system',
-          repo: 'https://github.com/pcs7637/lung-cancer-prediction-system',
-        },
-      },
-      {
-        id: 'igo-duya',
-        title: 'Igo_duya',
-        description: 'HIRA 데이터를 활용해 의료비를 비교·추천하는 플랫폼을 구현하고 지도 기반 UX를 설계했습니다.',
-        tags: ['API', 'Map', 'Next.js'],
-        links: {
-          demo: '#',
-          repo: '#',
-        },
-      },
       {
         id: 'sepsis',
         title: 'Early Sepsis Prediction',
-        description: '병동 스트리밍 데이터를 이용해 실시간 패혈증 위험도를 예측하고 알림을 제공하는 시스템을 만들었습니다.',
-        tags: ['Python', 'Scikit-learn', 'MLOps'],
-        links: {
-          demo: '#',
-          repo: '#',
-        },
-      },
-    ],
-  },
-  {
-    heading: '연구 및 PoC',
-    blurb: '실험적 시도와 연구 결과를 정리한 기록용 프로젝트들입니다.',
-    items: [
-      {
-        id: 'skin-lesion',
-        title: 'Skin Lesion Classifier',
-        description: 'DermIS 데이터를 정제하고 ResNet을 미세조정해 피부 병변 자동 분류 성능을 높였습니다.',
-        tags: ['PyTorch', 'Vision AI'],
+        description: 'ICU·병동 기반 EMR/Vital 데이터를 통합하여 패혈증 위험 환자를 조기에 감지하는 모델을 개발했습니다. 데이터 마트 생성부터 feature engineering, 모델링(LightGBM, XGBoost), threshold 조정, SHAP 기반 해석까지 전 과정에 참여했습니다.',
+        tags: ['EMR', 'LightGBM', 'SHAP', 'Clinical AI'],
         links: {
           demo: '#',
           repo: '#',
         },
       },
       {
-        id: 'ehr-nlp',
-        title: 'EHR 요약 NLP',
-        description: '임상 노트 요약을 위해 KoBERT 기반 압축 모델을 개발하고 평가 지표를 설계했습니다.',
-        tags: ['NLP', 'KoBERT'],
+        id: 'multi-cancer-seg',
+        title: 'Multi-Cancer Segmentation Preprocessing',
+        description: 'LiTS, KiTS23, HCC-TACE-SEG, MSD 등 다양한 공개 의료영상 데이터셋을 활용하여 마스크 추출, 슬라이스 생성, 오버레이 제작 등 segmentation 학습을 위한 전처리 파이프라인을 구축했습니다. NIfTI → 2D PNG 파이프라인 구축 및 multi-mask 매핑을 자동화했습니다.',
+        tags: ['NIfTI', 'DICOM', 'Segmentation', 'Medical Imaging'],
+        links: {
+          demo: '#',
+          repo: '#',
+        },
+      },
+      {
+        id: 'ai-pipeline',
+        title: 'Medical AI Automation Pipeline',
+        description: '의료 데이터 처리의 반복 작업을 자동화하기 위해 4단계 파이프라인(수집 → 전처리 → 학습 → 평가)을 구성했습니다. CLI 기반 실행 구조와 Config-driven 파이프라인으로 EMR/이미지 양쪽에 확장 가능한 구조를 채택했습니다.',
+        tags: ['Python', 'Pipeline', 'Automation', 'MLOps'],
         links: {
           demo: '#',
           repo: '#',

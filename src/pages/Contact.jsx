@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 const channels = [
   {
     heading: 'Email',
-    description: '협업 제안, 컨설팅 문의, 강연 요청은 이메일로 연락 주세요.',
-    value: 'hello@pcs7637.dev',
+    description: '협업 제안, 연구 문의는 이메일로 연락 주세요.',
+    value: 'pcs7637@gmail.com',
   },
   {
     heading: 'LinkedIn',
@@ -13,15 +13,15 @@ const channels = [
   },
   {
     heading: 'GitHub',
-    description: '코드 히스토리와 실험 노트를 공개합니다.',
+    description: '코드 히스토리와 프로젝트를 공개합니다.',
     value: 'github.com/pcs7637',
   },
 ]
 
 const availability = [
-  '리모트/하이브리드 협업 가능',
-  '의료 데이터 기반 ML 모델링·배포 컨설팅',
-  '워크샵, 사내 트레이닝, 해커톤 멘토링',
+  '의료 AI 연구실 포지션',
+  '의료 데이터 기반 ML 모델링·전처리 프로젝트',
+  'EMR/의료영상 데이터 파이프라인 구축',
 ]
 
 export default function Contact() {
@@ -33,7 +33,7 @@ export default function Contact() {
           <h2 className="text-3xl font-semibold text-slate-50">Contact</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
-          협업 제안이나 포트폴리오 관련 문의는 언제든지 환영합니다. 실사용 의료 AI 프로젝트의 설계부터 고도화까지 함께합니다.
+          의료 AI 연구 관련 문의나 협업 제안은 언제든지 환영합니다. 데이터 전처리부터 모델 개발까지 함께합니다.
         </p>
       </header>
 

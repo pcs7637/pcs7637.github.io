@@ -15,7 +15,7 @@ const navItems = [
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/pcs7637' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/pcs7637' },
-  { label: 'Email', href: 'mailto:hello@pcs7637.dev' },
+  { label: 'Email', href: 'mailto:pcs7637@gmail.com' },
 ]
 
 const introMessage = '> Press Enter to Start'
@@ -192,9 +192,8 @@ export default function App() {
       )}
 
       <div
-        className={`relative min-h-screen bg-slate-950 text-slate-200 transition-opacity duration-700 ${
-          hasEntered ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
-        }`}
+        className={`relative min-h-screen bg-slate-950 text-slate-200 transition-opacity duration-700 ${hasEntered ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+          }`}
         aria-hidden={!hasEntered}
       >
         <div className="background-layer" aria-hidden />
@@ -208,14 +207,14 @@ export default function App() {
                 </p>
                 <h1 className="text-4xl font-semibold tracking-tight text-slate-50">박철순</h1>
                 <h2 className="text-xl font-medium text-slate-300">
-                  데이터로 생명을 읽고,
+                  데이터로 의료의 흐름을 읽고,
                   <br />
-                  예측하는 사람
+                  임상결정을 더 안전하게 만드는 사람
                 </h2>
                 <p className="text-sm leading-relaxed text-slate-400">
-                  의료현장의 문제를 데이터로 정의하고, AI로 해석합니다. 공공데이터와 의료영상을 연결해,
+                  EMR·Vital·의료영상 등 복잡한 의료 데이터를 다루며,
                   <br />
-                  “사람의 생명”을 중심에 둔 인공지능을 만듭니다.
+                  전처리부터 모델 개발, 결과 해석까지 전체 파이프라인을 직접 구축합니다.
                 </p>
 
                 <nav className="hidden lg:block">

@@ -2,27 +2,28 @@ import { motion } from 'framer-motion'
 
 const timeline = [
   {
-    period: '2025',
-    role: '의료 AI 스타트업 · 리드 ML 엔지니어',
+    period: '2025.07–현재',
+    role: 'Biomedical AI 실무 프로젝트',
     bullets: [
-      '다기관 폐암 데이터셋 수집/정제 및 AutoML 파이프라인 구축',
-      '실시간 추론을 위한 GPU 인프라 및 모니터링 대시보드 설계',
+      'EMR 기반 패혈증 조기 예측 모델 개발 (LightGBM, XGBoost)',
+      '의료영상 segmentation 전처리 파이프라인 구축 (LiTS, KiTS23, HCC-TACE-SEG)',
+      '데이터 마트 생성 및 feature engineering 자동화',
     ],
   },
   {
-    period: '2023 – 2024',
-    role: '대학원 연구실 · 헬스케어 데이터 사이언티스트',
+    period: '2025.04–2025.07',
+    role: 'SQL/MariaDB 기반 의료데이터베이스 구축',
     bullets: [
-      'EMR·건강보험 빅데이터 기반 예후 예측 연구',
-      'ICML Healthcare Workshop, KDD Health Day 등 논문·포스터 발표',
+      'PHEMS dataset schema design 및 데이터베이스 구축',
+      'LOAD DATA LOCAL INFILE을 활용한 대용량 데이터 적재 자동화',
     ],
   },
   {
-    period: '2020 – 2022',
-    role: '데이터 컨설턴트',
+    period: '2025.01–2025.04',
+    role: 'Medical Imaging Fundamentals',
     bullets: [
-      '공공데이터 헬스케어 프로젝트 12건 컨설팅 및 지표 설계',
-      '지자체/병원 보고서 자동화를 위한 데이터 파이프라인 구축',
+      'DICOM/NIfTI 포맷 이해 및 3D Slicer, ITK-SNAP 활용',
+      'CT/MRI 기반 segmentation 실습 및 전처리 기법 학습',
     ],
   },
 ]
@@ -101,7 +102,7 @@ export function ExperienceSection() {
           <h2 className="text-3xl font-semibold text-slate-50">Experience</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
-          프로덕트와 연구를 넘나들며 의료 데이터를 활용한 AI 솔루션을 만들어 온 경력입니다.
+          건양대학교병원 바이오메디컬 AI 과정에서 수행한 프로젝트와 학습 경험입니다.
         </p>
       </header>
 
@@ -144,7 +145,7 @@ export function SkillsSection() {
           <h2 className="text-3xl font-semibold text-slate-50">Skills</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
-          의료 AI 프로덕트를 빠르게 실험하고 운영하기 위해 활용하는 기술 스택입니다.
+          의료 AI 연구 및 데이터 파이프라인 구축을 위해 활용하는 기술 스택입니다.
         </p>
       </header>
 
@@ -191,10 +192,10 @@ export function SkillsSection() {
                   return (
                     <div key={key} className="skill-item">
                       <span className="skill-icon skill-icon--custom">
-                        <img 
-                          src={custom.src} 
-                          alt={displayLabel} 
-                          className="skill-icon__img" 
+                        <img
+                          src={custom.src}
+                          alt={displayLabel}
+                          className="skill-icon__img"
                           loading="lazy"
                           onError={(e) => {
                             e.target.onerror = null;
@@ -226,7 +227,7 @@ export default function AboutSection() {
           <h2 className="text-3xl font-semibold text-slate-50">About</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
-          환자와 의료진이 신뢰할 수 있는 AI 솔루션을 만들기 위해 데이터 파이프라인과 제품 개발을 통합적으로 바라봅니다.
+          데이터로 의료의 흐름을 읽고, 임상 현장에 실용적인 AI를 적용하는 사람입니다.
         </p>
       </header>
 
@@ -239,12 +240,17 @@ export default function AboutSection() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-sm leading-relaxed text-slate-300">
-            컴퓨터 비전과 임상 데이터 분석 경험을 바탕으로, 모델 개발에서 배포·모니터링까지 이어지는 ML 시스템을 설계합니다.
-            의료기관과 협업하며 실제 환자 케어에 도움이 되는 기능을 우선시하고, 복잡한 데이터 환경을 정돈해 실험 속도를 높입니다.
+            건양대학교병원 바이오메디컬 AI 과정에서 EMR·Vital·의료영상(CT/MRI) 등 복잡한 의료 데이터를 다루며
+            전처리부터 모델 개발, 결과 해석까지 전체 파이프라인을 직접 구축하는 경험을 쌓았습니다.
           </p>
           <p className="text-sm leading-relaxed text-slate-300">
-            소규모 스타트업부터 대형 병원 연구실까지 다양한 팀과 협업하며 기술 의사결정을 리드했으며, 프로덕트와 연구를 연결해
-            임상 현장에 바로 적용 가능한 결과를 도출하는 것에 집중하고 있습니다.
+            제가 가장 잘하는 일은 혼란스러운 데이터를 정돈하여, 임상적으로 의미 있는 형태로 변환하는 것입니다.
+            각종 포맷(NIfTI, DICOM, CSV, EHR), 다기관 데이터셋, 누락·오류가 포함된 원천 데이터를 다뤄오며
+            데이터의 '흐름'을 이해하는 능력을 키워왔습니다.
+          </p>
+          <p className="text-sm leading-relaxed text-slate-300">
+            단순히 코드를 작성하는 것을 넘어 의료 문제를 '정의하고', 데이터로 '구조화하며', AI로 '해석하는' 과정 전체에 관심이 있습니다.
+            이러한 철학이 임상결정지원시스템(CDSS)과 의료 AI의 본질이라고 믿으며, 실제 임상에 도움이 되는 기술을 만드는 연구를 하고 싶습니다.
           </p>
         </motion.article>
 
@@ -258,9 +264,9 @@ export default function AboutSection() {
           <div className="h-full rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-6">
             <h3 className="text-base font-semibold text-medblue-bright">핵심 역량</h3>
             <ul className="mt-4 space-y-3 text-sm text-slate-300">
-              <li>의료영상 + 임상 데이터 융합 파이프라인 설계</li>
-              <li>배포 후 성능 추적을 고려한 MLOps 아키텍처 설계</li>
-              <li>원내·공공 데이터를 활용한 정책/비즈니스 인사이트 도출</li>
+              <li>EMR/Vital 기반 예측 모델링</li>
+              <li>의료영상 segmentation 전처리</li>
+              <li>데이터 전처리 자동화 파이프라인</li>
             </ul>
           </div>
         </motion.aside>
