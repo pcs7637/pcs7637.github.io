@@ -2,28 +2,33 @@ import { motion } from 'framer-motion'
 
 const timeline = [
   {
-    period: '2025.07–현재',
-    role: 'Biomedical AI 실무 프로젝트',
+    period: '2025.07 – 2026.01',
+    role: '건양대학교병원 바이오메디컬 AI 과정 (3기)',
     bullets: [
-      'EMR 기반 패혈증 조기 예측 모델 개발 (LightGBM, XGBoost)',
-      '의료영상 segmentation 전처리 파이프라인 구축 (LiTS, KiTS23, HCC-TACE-SEG)',
-      '데이터 마트 생성 및 feature engineering 자동화',
+      'CDSS 개발 실습 및 K-MIMIC DB 구축·분석',
+      'EMR 기반 패혈증 조기 예측 모델 개발 (LightGBM, XGBoost, SHAP)',
+      'CT/MRI 의료영상 전처리·세그멘테이션 파이프라인 구축 (LiTS, KiTS23, HCC-TACE-SEG)',
+      '데이터 마트 생성, feature engineering, 자동화 파이프라인 설계',
     ],
   },
   {
-    period: '2025.04–2025.07',
-    role: 'SQL/MariaDB 기반 의료데이터베이스 구축',
+    period: '2022.11 – 2025.04',
+    role: '공정 관리 / 설비 관리 — (주)동광아연',
     bullets: [
-      'PHEMS dataset schema design 및 데이터베이스 구축',
-      'LOAD DATA LOCAL INFILE을 활용한 대용량 데이터 적재 자동화',
+      '공장 전체 공정 운영 및 프로세스 관리',
+      '안전 기준 준수·위험요소 분석 등 시스템 안정성 확보',
+      '이상 상황 탐지·보고 체계 운영 및 제조 데이터 기반 공정 효율 분석',
+      '→ 의료데이터 파이프라인의 안정성·품질관리 경험으로 연결',
     ],
   },
   {
-    period: '2025.01–2025.04',
-    role: 'Medical Imaging Fundamentals',
+    period: '2019.11 – 2022.11',
+    role: '기자재 유통·기술영업 — (주)명일전기',
     bullets: [
-      'DICOM/NIfTI 포맷 이해 및 3D Slicer, ITK-SNAP 활용',
-      'CT/MRI 기반 segmentation 실습 및 전처리 기법 학습',
+      'LS산전, Autonics, Honeywell 등 산업용 센서·전장 제품 공급',
+      '고객 요구사항 분석 및 구성 요소 최적화 제안',
+      '기술 문서·사양 관리와 분류 체계 정리',
+      '→ 의료기기/임상정보 시스템을 이해하는 기반 경험',
     ],
   },
 ]
@@ -102,7 +107,7 @@ export function ExperienceSection() {
           <h2 className="text-3xl font-semibold text-slate-50">Experience</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
-          건양대학교병원 바이오메디컬 AI 과정에서 수행한 프로젝트와 학습 경험입니다.
+          제조·공정 분야의 실무 경험을 기반으로, 현재는 의료데이터·AI 모델링 중심의 전문성을 확장하고 있습니다.
         </p>
       </header>
 

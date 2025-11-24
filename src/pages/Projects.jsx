@@ -15,12 +15,11 @@ const projectGroups = [
       },
       {
         id: 'multi-cancer-seg',
-        title: 'Multi-Cancer Segmentation Preprocessing',
-        description: 'LiTS, KiTS23, HCC-TACE-SEG, MSD 등 다양한 공개 의료영상 데이터셋을 활용하여 마스크 추출, 슬라이스 생성, 오버레이 제작 등 segmentation 학습을 위한 전처리 파이프라인을 구축했습니다. NIfTI → 2D PNG 파이프라인 구축 및 multi-mask 매핑을 자동화했습니다.',
+        title: 'Medical Image Preprocessing Pipelines',
+        description: 'BraTS2023, KiTS23, LIDC-IDRI, MAMA-MIA 등 4개의 주요 의료 영상 데이터셋을 2D 딥러닝 모델 학습에 적합한 형태로 변환하는 전처리 파이프라인 모음입니다. 도메인별 정규화, 방향 표준화, 전문가 합의 기반 세그멘테이션 등 의료 영상 특화 기술을 적용했습니다.',
         tags: ['NIfTI', 'DICOM', 'Segmentation', 'Medical Imaging'],
         links: {
-          demo: '#',
-          repo: '#',
+          repo: 'https://github.com/pcs7637/medical-image-preprocessing',
         },
       },
       {
@@ -51,14 +50,16 @@ function ProjectItem({ project }) {
       <header className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
         <h3 className="text-xl font-semibold text-slate-100">{project.title}</h3>
         <div className="flex gap-4 text-sm font-medium text-medblue-bright">
-          <a
-            href={project.links.demo}
-            className="inline-flex items-center gap-1 transition hover:text-medblue-soft"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Live Demo ↗
-          </a>
+          {project.links.demo && (
+            <a
+              href={project.links.demo}
+              className="inline-flex items-center gap-1 transition hover:text-medblue-soft"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Live Demo ↗
+            </a>
+          )}
           <a
             href={project.links.repo}
             className="inline-flex items-center gap-1 text-slate-400 transition hover:text-medblue-soft"
