@@ -9,8 +9,7 @@ const projectGroups = [
         description: 'ICU·병동 기반 EMR/Vital 데이터를 통합하여 패혈증 위험 환자를 조기에 감지하는 모델을 개발했습니다. 데이터 마트 생성부터 feature engineering, 모델링(LightGBM, XGBoost), threshold 조정, SHAP 기반 해석까지 전 과정에 참여했습니다.',
         tags: ['EMR', 'LightGBM', 'SHAP', 'Clinical AI'],
         links: {
-          demo: '#',
-          repo: '#',
+          repo: 'https://github.com/pcs7637/phems-sepsis-early-warning',
         },
       },
       {
