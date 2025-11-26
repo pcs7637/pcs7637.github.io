@@ -3,12 +3,13 @@ import { motion } from 'framer-motion'
 import Projects from './pages/Projects.jsx'
 import About, { ExperienceSection, SkillsSection } from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
+import Journey from './pages/Journey.jsx'
 
 const navItems = [
   { id: 'about', label: 'About' },
-  { id: 'experience', label: 'Experience' },
-  { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -24,6 +25,7 @@ export default function App() {
   const year = new Date().getFullYear()
   const [hasEntered, setHasEntered] = useState(false)
   const [typedMessage, setTypedMessage] = useState('')
+  const [currentPage, setCurrentPage] = useState('home') // 'home' or 'journey'
 
   useEffect(() => {
     const root = document.documentElement
@@ -118,6 +120,21 @@ export default function App() {
       }
     }
   }, [])
+
+  const handleNavigateToJourney = () => {
+    setCurrentPage('journey')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleBackToPortfolio = () => {
+    setCurrentPage('home')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  // Show Journey page if currentPage is 'journey'
+  if (hasEntered && currentPage === 'journey') {
+    return <Journey onBack={handleBackToPortfolio} />
+  }
 
   return (
     <>
@@ -279,10 +296,10 @@ export default function App() {
                 ))}
               </nav>
             </section>
-            <About />
-            <ExperienceSection />
-            <SkillsSection />
+            <About onNavigateToJourney={handleNavigateToJourney} />
             <Projects />
+            <SkillsSection />
+            <ExperienceSection />
             <Contact />
           </main>
         </div>

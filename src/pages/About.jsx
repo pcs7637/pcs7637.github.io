@@ -103,7 +103,7 @@ export function ExperienceSection() {
     <section id="experience" className="scroll-mt-24 space-y-8">
       <header className="space-y-2">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">02</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">04</span>
           <h2 className="text-3xl font-semibold text-slate-50">Experience</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
@@ -278,30 +278,40 @@ export default function AboutSection({ onNavigateToJourney }) {
             </div>
           </motion.aside>
 
-          {/* My Journey 박스 - 클릭 가능 */}
-          <motion.aside
-            className="flex-1 rounded-3xl border border-medblue-bright/20 bg-gradient-to-br from-medblue-dark/20 via-medblue/15 to-medblue-soft/10 p-[1px] cursor-pointer transition-transform hover:scale-[1.02]"
+          {/* My Journey 박스 - 클릭 가능 + 애니메이션 효과 */}
+          <motion.div
+            className="flex-1"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            onClick={onNavigateToJourney}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
           >
-            <div className="h-full rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-6 flex flex-col justify-center">
-              <h3 className="text-base font-semibold text-medblue-bright mb-3">
-                💡 From Survival to Saving Lives
-              </h3>
-              <p className="text-xs leading-relaxed text-slate-300">
-                AI로 생존하려 시작했지만, 생명을 지키기 위해 Medical AI로 도착했습니다.
-                <br />
-                <span className="text-medblue-soft/80 mt-2 block">
-                  기술 뒤에 숨은 이야기가 궁금하신가요?
-                </span>
-              </p>
-            </div>
-          </motion.aside>
+            <aside
+              className="journey-box-wrapper h-full rounded-3xl p-[2px] cursor-pointer transition-transform hover:scale-[1.02]"
+              onClick={onNavigateToJourney}
+            >
+              <motion.div
+                className="h-full rounded-[calc(theme(borderRadius.3xl)-2px)] bg-slate-950/95 p-6 flex flex-col justify-center"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <h3 className="text-base font-semibold mb-3 leading-relaxed journey-title-shimmer">
+                  💡 From Survival
+                  <br />
+                  <span className="ml-6">to Saving Lives</span>
+                </h3>
+                <p className="text-xs leading-relaxed text-slate-300">
+                  생존을 위해 AI를 시작했고,
+                  <br />
+                  생명을 지키기 위해 Medical AI로 도착했습니다.
+                  <br />
+                  <span className="text-medblue-soft/80 mt-2 block">
+                    기술 뒤에 숨은 이야기가 궁금하신가요?
+                  </span>
+                </p>
+              </motion.div>
+            </aside>
+          </motion.div>
         </div>
       </div>
     </section>

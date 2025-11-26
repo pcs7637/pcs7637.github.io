@@ -190,3 +190,86 @@ a {
   pointer-events: none;
   z-index: 0;
 }
+
+/* My Journey Box Animated Border */
+@keyframes journey-border-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes journey-glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(25px);
+  }
+}
+
+.journey-box-wrapper {
+  position: relative;
+  animation: journey-border-rotate 4s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    rgba(128, 217, 255, 0.3),
+    rgba(168, 85, 247, 0.3),
+    rgba(236, 72, 153, 0.3),
+    rgba(128, 217, 255, 0.3)
+  );
+  background-size: 300% 100%;
+}
+
+.journey-box-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(128, 217, 255, 0.5),
+    rgba(168, 85, 247, 0.5),
+    rgba(236, 72, 153, 0.5),
+    rgba(128, 217, 255, 0.5)
+  );
+  background-size: 300% 100%;
+  animation: journey-border-rotate 4s ease-in-out infinite;
+  opacity: 0.6;
+  filter: blur(20px);
+  z-index: -1;
+  animation: journey-glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes journey-text-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.journey-title-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(128, 217, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 25%,
+    rgba(128, 217, 255, 1) 50%,
+    rgba(255, 255, 255, 1) 75%,
+    rgba(128, 217, 255, 1) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: journey-text-shimmer 3s linear infinite;
+}
+
