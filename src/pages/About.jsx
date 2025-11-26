@@ -223,7 +223,7 @@ export function SkillsSection() {
   )
 }
 
-export default function AboutSection() {
+export default function AboutSection({ onNavigateToJourney }) {
   return (
     <section id="about" className="scroll-mt-24 space-y-8">
       <header className="space-y-2">
@@ -259,22 +259,50 @@ export default function AboutSection() {
           </p>
         </motion.article>
 
-        <motion.aside
-          className="rounded-3xl border border-medblue-bright/20 bg-gradient-to-br from-medblue-dark/20 via-medblue/15 to-medblue-soft/10 p-[1px]"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-        >
-          <div className="h-full rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-6">
-            <h3 className="text-base font-semibold text-medblue-bright">핵심 역량</h3>
-            <ul className="mt-4 space-y-3 text-sm text-slate-300">
-              <li>EMR/Vital 기반 예측 모델링</li>
-              <li>의료영상 segmentation 전처리</li>
-              <li>데이터 전처리 자동화 파이프라인</li>
-            </ul>
-          </div>
-        </motion.aside>
+        <div className="flex flex-col gap-6">
+          {/* 핵심 역량 박스 - 높이 50% */}
+          <motion.aside
+            className="flex-1 rounded-3xl border border-medblue-bright/20 bg-gradient-to-br from-medblue-dark/20 via-medblue/15 to-medblue-soft/10 p-[1px]"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            <div className="h-full rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-6">
+              <h3 className="text-base font-semibold text-medblue-bright">핵심 역량</h3>
+              <ul className="mt-4 space-y-3 text-sm text-slate-300">
+                <li>EMR/Vital 기반 예측 모델링</li>
+                <li>의료영상 segmentation 전처리</li>
+                <li>데이터 전처리 자동화 파이프라인</li>
+              </ul>
+            </div>
+          </motion.aside>
+
+          {/* My Journey 박스 - 클릭 가능 */}
+          <motion.aside
+            className="flex-1 rounded-3xl border border-medblue-bright/20 bg-gradient-to-br from-medblue-dark/20 via-medblue/15 to-medblue-soft/10 p-[1px] cursor-pointer transition-transform hover:scale-[1.02]"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            onClick={onNavigateToJourney}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <div className="h-full rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-6 flex flex-col justify-center">
+              <h3 className="text-base font-semibold text-medblue-bright mb-3">
+                💡 From Survival to Saving Lives
+              </h3>
+              <p className="text-xs leading-relaxed text-slate-300">
+                AI로 생존하려 시작했지만, 생명을 지키기 위해 Medical AI로 도착했습니다.
+                <br />
+                <span className="text-medblue-soft/80 mt-2 block">
+                  기술 뒤에 숨은 이야기가 궁금하신가요?
+                </span>
+              </p>
+            </div>
+          </motion.aside>
+        </div>
       </div>
     </section>
   )
