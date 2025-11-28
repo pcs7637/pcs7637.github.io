@@ -1,3 +1,6 @@
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+
 const projectGroups = [
   {
     heading: '대표 프로젝트',
@@ -20,6 +23,23 @@ const projectGroups = [
         links: {
           repo: 'https://github.com/pcs7637/medical-image-preprocessing',
         },
+        images: [
+          {
+            src: '/assets/comprehensive_overview_diagram.png',
+            alt: '4개 프로젝트 통합 파이프라인 다이어그램',
+            caption: 'Pipeline Overview'
+          },
+          {
+            src: '/assets/preprocessing_statistics.png',
+            alt: '전처리 통계 대시보드',
+            caption: 'Statistics Dashboard'
+          },
+          {
+            src: '/assets/github_repository_banner.png',
+            alt: 'GitHub 레포지토리 배너',
+            caption: 'Project Banner'
+          }
+        ]
       },
       {
         id: 'ai-pipeline',
@@ -35,9 +55,21 @@ const projectGroups = [
   },
 ]
 
-import { motion } from 'framer-motion'
-
 function ProjectItem({ project }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  const nextImage = () => {
+    if (project.images) {
+      setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
+    }
+  }
+
+  const prevImage = () => {
+    if (project.images) {
+      setCurrentImageIndex((prev) => (prev - 1 + project.images.length) % project.images.length)
+    }
+  }
+
   return (
     <motion.article
       className="group rounded-3xl border border-slate-800/80 bg-slate-900/60 p-8 transition duration-200 hover:-translate-y-1 hover:border-medblue-bright/60 hover:bg-slate-900/80"
@@ -69,6 +101,68 @@ function ProjectItem({ project }) {
           </a>
         </div>
       </header>
+
+      {/* Image Carousel */}
+      {project.images && project.images.length > 0 && (
+        <div className="relative mt-6 overflow-hidden rounded-2xl bg-slate-950/50 border border-slate-800/50">
+          <div className="relative aspect-video">
+            <img
+              src={project.images[currentImageIndex].src}
+              alt={project.images[currentImageIndex].alt}
+              className="w-full h-full object-contain"
+            />
+
+            {/* Navigation Arrows */}
+            {project.images.length > 1 && (
+              <>
+                <button
+                  onClick={prevImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-slate-900/80 p-3 text-slate-300 backdrop-blur-sm transition hover:bg-medblue-bright hover:text-white"
+                  aria-label="Previous image"
+                >
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-slate-900/80 p-3 text-slate-300 backdrop-blur-sm transition hover:bg-medblue-bright hover:text-white"
+                  aria-label="Next image"
+                >
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </>
+            )}
+
+            {/* Image Caption */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent px-6 py-4">
+              <p className="text-sm font-medium text-slate-300">
+                {project.images[currentImageIndex].caption}
+              </p>
+            </div>
+          </div>
+
+          {/* Dot Indicators */}
+          {project.images.length > 1 && (
+            <div className="flex justify-center gap-2 py-3">
+              {project.images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`h-2 rounded-full transition-all ${index === currentImageIndex
+                      ? 'w-8 bg-medblue-bright'
+                      : 'w-2 bg-slate-700 hover:bg-slate-600'
+                    }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       <p className="mt-4 text-sm leading-relaxed text-slate-400">{project.description}</p>
       <div className="mt-5 flex flex-wrap gap-2">
         {project.tags.map((tag) => (
