@@ -231,9 +231,7 @@ export default function AboutSection({ onNavigateToJourney }) {
           <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">01</span>
           <h2 className="text-3xl font-semibold text-slate-50">About</h2>
         </div>
-        <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
-          데이터로 의료의 흐름을 읽고, 임상 현장에 실용적인 AI를 적용하는 사람입니다.
-        </p>
+        
       </header>
 
       <div className="grid gap-6 lg:grid-cols-[1.6fr,1fr]">
@@ -244,40 +242,24 @@ export default function AboutSection({ onNavigateToJourney }) {
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sm leading-relaxed text-slate-300">
-            건양대학교병원 바이오메디컬 AI 과정에서 EMR·Vital·의료영상(CT/MRI) 등 복잡한 의료 데이터를 다루며
-            전처리부터 모델 개발, 결과 해석까지 전체 파이프라인을 직접 구축하는 경험을 쌓았습니다.
-          </p>
-          <p className="text-sm leading-relaxed text-slate-300">
-            제가 가장 잘하는 일은 혼란스러운 데이터를 정돈하여, 임상적으로 의미 있는 형태로 변환하는 것입니다.
-            각종 포맷(NIfTI, DICOM, CSV, EHR), 다기관 데이터셋, 누락·오류가 포함된 원천 데이터를 다뤄오며
-            데이터의 '흐름'을 이해하는 능력을 키워왔습니다.
-          </p>
-          <p className="text-sm leading-relaxed text-slate-300">
-            단순히 코드를 작성하는 것을 넘어 의료 문제를 '정의하고', 데이터로 '구조화하며', AI로 '해석하는' 과정 전체에 관심이 있습니다.
-            이러한 철학이 임상결정지원시스템(CDSS)과 의료 AI의 본질이라고 믿으며, 실제 임상에 도움이 되는 기술을 만드는 연구를 하고 싶습니다.
-          </p>
+          <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
+          의료 영상과 임상 데이터를
+          <br />
+          모델이 바로 사용할 수 있는 형태로 정리하고,
+          <br />
+          전처리·학습·추론 과정을 하나의 흐름으로 연결합니다.
+          <br />
+          <br />
+          좌표계 정합, 데이터 표준화, 결측 처리 등
+          <br />
+          모델 이전 단계의 품질을 중시하며,
+          <br />
+          재현 가능한 실험 환경과 해석 가능한 결과를 목표로 합니다.
+        </p>
+        
         </motion.article>
 
         <div className="flex flex-col gap-6">
-          {/* 핵심 역량 박스 - 높이 50% */}
-          <motion.aside
-            className="flex-1 rounded-3xl border border-medblue-bright/20 bg-gradient-to-br from-medblue-dark/20 via-medblue/15 to-medblue-soft/10 p-[1px]"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-          >
-            <div className="h-full rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-6">
-              <h3 className="text-base font-semibold text-medblue-bright">핵심 역량</h3>
-              <ul className="mt-4 space-y-3 text-sm text-slate-300">
-                <li>EMR/Vital 기반 예측 모델링</li>
-                <li>의료영상 segmentation 전처리</li>
-                <li>데이터 전처리 자동화 파이프라인</li>
-              </ul>
-            </div>
-          </motion.aside>
-
           {/* My Journey 박스 - 클릭 가능 + 애니메이션 효과 */}
           <motion.div
             className="flex-1"
@@ -303,10 +285,10 @@ export default function AboutSection({ onNavigateToJourney }) {
                 <p className="text-xs leading-relaxed text-slate-300">
                   생존을 위해 AI를 시작했고,
                   <br />
-                  생명을 지키기 위해 Medical AI로 도착했습니다.
+                  생명을 지키는 파이프라인을 설계합니다.
                   <br />
                   <span className="text-medblue-soft/80 mt-2 block">
-                    기술 뒤에 숨은 이야기가 궁금하신가요?
+                    기술과 삶이 만난 여정을 확인하세요.
                   </span>
                 </p>
               </motion.div>

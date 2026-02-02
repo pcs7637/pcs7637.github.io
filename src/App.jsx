@@ -140,47 +140,39 @@ export default function App() {
     <>
       {!hasEntered && (
         <div className="fixed inset-0 z-50 overflow-hidden">
-          <video
-            className="absolute inset-0 h-full w-full object-cover"
-            src="/assets/brain_video01.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-          />
-          <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-sm" />
-          <div className="intro-gradient" aria-hidden />
-          <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
-            <motion.button
-              type="button"
-              onClick={handleEnterClick}
-              initial={{ opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
-              className="intro-panel group max-w-lg space-y-5 rounded-3xl border border-medblue-soft/60 bg-slate-950/70 px-12 py-12 text-center shadow-medblue-glow"
-            >
-              <motion.div
-                className="flex items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-[0.55em] text-medblue-soft/70"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 }}
+            <video
+              className="absolute inset-0 h-full w-full object-cover"
+              src="/assets/List-16-9.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
+            <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-sm" />
+            <div className="intro-gradient" aria-hidden />
+            <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+              <motion.button
+                type="button"
+                onClick={handleEnterClick}
+                initial={{ opacity: 0, scale: 0.94 }}
+                animate={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                className="intro-panel group max-w-lg space-y-5 rounded-3xl border border-medblue-soft/60 bg-slate-950/40 px-12 py-12 text-center shadow-medblue-glow"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-medblue-bright/80 animate-ping" aria-hidden />
-                System Online
-              </motion.div>
-              <motion.p
-                className="text-xs uppercase tracking-[0.35em] text-medblue-soft/80"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.25 }}
-              >
-                MediMarryMe Biomedical
-              </motion.p>
-              <motion.div
-                className="intro-type intro-typewriter mx-auto text-[1.5rem] font-semibold tracking-tight text-medblue-bright"
-                initial={{ opacity: 0, y: 12 }}
+                <motion.div
+                  className="flex items-center justify-center gap-2 text-[10px] font-semibold uppercase tracking-[0.55em] text-medblue-soft/70"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-medblue-bright/80 animate-ping" aria-hidden />
+                  System Online
+                </motion.div>
+                <motion.div
+                  className="intro-type intro-typewriter mx-auto text-[1.5rem] font-semibold tracking-tight text-medblue-bright"
+                  initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.4 }}
               >
@@ -220,19 +212,35 @@ export default function App() {
             <div className="flex h-full flex-col justify-between gap-10">
               <div className="space-y-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-medblue-soft/80">
-                  Biomedical AI 포트폴리오
+                  Medical AI Engineer
                 </p>
-                <h1 className="text-4xl font-semibold tracking-tight text-slate-50">박철순</h1>
+                <div className="flex items-center gap-5">
+                  <div className="h-40 w-40 overflow-hidden rounded-[32px] border border-slate-700/60 bg-slate-900/60 shadow-lg shadow-slate-950/40">
+                    <img
+                      src="/assets/KakaoTalk_20260128_211215968_03_512.png"
+                      alt="박철순 프로필 사진"
+                      className="h-full w-full object-cover object-[center_18%]"
+                      loading="lazy"
+                    />
+                  </div>
+                  <h1 className="text-4xl font-semibold tracking-tight text-slate-50">박철순</h1>
+                </div>
                 <h2 className="text-xl font-medium text-slate-300">
-                  데이터로 의료의 흐름을 읽고,
-                  <br />
-                  임상결정을 더 안전하게 만드는 사람
+                  Medical AI Engineer (Data Pipeline & Imaging)
                 </h2>
                 <p className="text-sm leading-relaxed text-slate-400">
-                  EMR·Vital·의료영상 등 복잡한 의료 데이터를 다루며,
+                  의료 영상(CT/MRI)과 임상 데이터(EMR, Vital)를
                   <br />
-                  전처리부터 모델 개발, 결과 해석까지 전체 파이프라인을 직접 구축합니다.
+                  AI 분석이 가능하도록 구조화하고,
+                  <br />
+                  전처리–학습–추론 과정을 하나의 파이프라인으로 설계합니다.
                 </p>
+                <ul className="space-y-2 text-sm text-slate-400">
+                  <li>- Medical Imaging & Clinical Data</li>
+                  <li>- Pipeline-first System Design</li>
+                  <li>- LLM-assisted Rapid Prototyping</li>
+                </ul>
+                <p className="text-sm italic text-slate-500">“모델이 아니라, 데이터가 흐르는 구조를 만듭니다.”</p>
 
                 <nav className="hidden lg:block">
                   <ul className="space-y-4 text-sm font-medium">
