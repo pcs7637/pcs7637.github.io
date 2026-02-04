@@ -36,7 +36,8 @@ const projectGroups = [
             alt: 'Breast Cancer Imaging Pipeline Thumbnail',
             caption: 'MRI-based Tumor Segmentation Pipeline'
           }
-        ]
+        ],
+        demoVideo: '/assets/20260126_091922555.mp4'
       },
       {
         id: 'prostate-cancer-cdss',
@@ -58,7 +59,7 @@ const projectGroups = [
 이 프로젝트를 통해, 의료 AI의 핵심 가치는 단순한 세그멘테이션 정확도(Dice Score)가 아니라, **“조직검사를 위해 놓치지 않는 후보 제시(High Recall)”**와 **“시스템적 안정성”**이 결합된 워크플로우 통합에 있음을 확인했습니다. 또한 본 파이프라인은 전립선암을 넘어 신장암(Kidney) 등 타 장기로 즉시 확장 가능한 Config-driven 구조로 설계되어, 의료 AI 플랫폼으로서의 확장 가능성을 입증했습니다.`,
         tags: ['Python', 'PyTorch', 'MONAI', 'Django', 'FastAPI', 'Docker', 'MinIO', 'PostgreSQL', 'Orthanc', 'RAG'],
         links: {
-          // repo: '#', 
+          repo: 'https://github.com/pcs7637/Prostate-AI-Worker', 
         },
         images: [
           {
@@ -91,7 +92,7 @@ const projectGroups = [
 이 프로젝트를 통해, 하드웨어 제약은 모델 구조의 축소가 아니라 **“전략적 데이터 처리(ROI-based approach)”**로 극복 가능함을 확인했습니다. 또한 의료 AI의 신뢰성은 단순히 높은 평균 점수가 아니라, 상류 단계(신장 검출)의 오류가 하류 단계(종양 분할)에 미치는 영향을 정량화하는 **“평가의 투명성(Dual Evaluation)”**에서 비롯됨을 입증했습니다. 이는 연구용 모델이 실제 병원 시스템에 이식될 때 발생할 수 있는 성능 간극(Gap)을 사전에 파악하고 대비하는 핵심 방법론이 됩니다.`,
         tags: ['Python', 'PyTorch', 'nnU-Net v2', 'TotalSegmentator', 'SimpleITK', 'Docker'],
         links: {
-          // repo: '#',
+          repo: 'https://github.com/pcs7637/KiTS23-Tumor-Segmentation',
         },
         images: [
           {
@@ -127,17 +128,11 @@ const projectGroups = [
   },
 ]
 
-// 상세 내용 텍스트 모달
+// Modal for Text Details
 function ProjectModal({ project, isOpen, onClose }) {
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => {
-      document.body.style.overflow = 'unset'
-    }
+    if (isOpen) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = 'unset'
   }, [isOpen])
 
   if (!isOpen) return null
@@ -145,45 +140,16 @@ function ProjectModal({ project, isOpen, onClose }) {
   return createPortal(
     <AnimatePresence>
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-        <motion.div
-          className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-        />
-        <motion.div
-          className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-slate-700 bg-slate-900 p-8 shadow-2xl"
-          initial={{ opacity: 0, scale: 0.95, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <button
-            onClick={onClose}
-            className="absolute right-6 top-6 rounded-full bg-slate-800 p-2 text-slate-400 transition hover:bg-slate-700 hover:text-white"
-            aria-label="Close modal"
-          >
-            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+        <motion.div className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} />
+        <motion.div className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-2xl" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}>
+          <button onClick={onClose} className="absolute right-6 top-6 text-slate-400 hover:text-white transition">
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
-          <h3 className="pr-10 text-2xl font-bold text-slate-100">{project.title}</h3>
-          <div className="mt-6 space-y-6 text-slate-300">
-             <div className="whitespace-pre-line text-sm leading-relaxed text-slate-400">
-               {project.description}
-             </div>
-             <hr className="border-slate-700/50" />
-             <div className="whitespace-pre-line text-sm leading-relaxed text-slate-300">
-               {project.details}
-             </div>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-2">
-             {project.tags.map((tag) => (
-                <span key={tag} className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs font-medium text-slate-400">
-                  {tag}
-                </span>
-             ))}
+          <h3 className="text-2xl font-bold text-slate-100 mb-6">{project.title}</h3>
+          <div className="whitespace-pre-line text-sm leading-relaxed text-slate-300 space-y-6">
+            <p className="font-semibold text-medblue-bright">{project.description}</p>
+            <div className="h-px bg-slate-800" />
+            <p>{project.details}</p>
           </div>
         </motion.div>
       </div>
@@ -192,112 +158,57 @@ function ProjectModal({ project, isOpen, onClose }) {
   )
 }
 
-// 이미지 크게 보기 모달 (단일/다중 이미지 지원)
-function ImageModal({ images, initialIndex = 0, isOpen, onClose }) {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex)
-
-  // 모달이 열릴 때마다 인덱스 초기화
+// Lightbox for Images
+function ImageModal({ images, isOpen, onClose }) {
+  const [idx, setIdx] = useState(0)
+  
   useEffect(() => {
-    if (isOpen) {
-      setCurrentIndex(initialIndex)
-    }
-  }, [isOpen, initialIndex])
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
-    }
-    return () => {
-      document.body.style.overflow = 'unset'
-    }
+    if (isOpen) setIdx(0) // Reset index on open
   }, [isOpen])
 
-  if (!isOpen || !images || images.length === 0) return null
-
-  const nextImage = (e) => {
-    e.stopPropagation()
-    setCurrentIndex((prev) => (prev + 1) % images.length)
-  }
-
-  const prevImage = (e) => {
-    e.stopPropagation()
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
-  }
-
+  if (!isOpen || !images) return null
+  
   return createPortal(
-    <AnimatePresence>
-      <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
-        {/* Backdrop */}
-        <motion.div
-          className="absolute inset-0 bg-black/90 backdrop-blur-md"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-        />
-        
-        {/* Content Container */}
-        <motion.div
-          className="relative max-w-5xl overflow-hidden rounded-xl shadow-2xl bg-slate-900/50 flex flex-col items-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute right-4 top-4 z-20 rounded-full bg-black/50 p-2 text-white/70 backdrop-blur-sm transition hover:bg-black/70 hover:text-white"
-            aria-label="Close image view"
-          >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-          
-          {/* Main Image */}
-          <div className="relative">
-             <img
-              src={images[currentIndex].src}
-              alt={images[currentIndex].alt || 'Project Image'}
-              className="max-h-[80vh] w-auto object-contain" 
-            />
-            
-            {/* Navigation Arrows (if multiple images) */}
-            {images.length > 1 && (
-              <>
-                <button
-                  onClick={prevImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/50 p-3 text-white/70 backdrop-blur-sm transition hover:bg-black/80 hover:text-white"
-                >
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/50 p-3 text-white/70 backdrop-blur-sm transition hover:bg-black/80 hover:text-white"
-                >
-                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </>
-            )}
+    <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/95 p-4" onClick={onClose}>
+      <div className="relative max-w-5xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute -top-12 right-0 text-white/70 hover:text-white transition">
+            <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <img src={images[idx].src} className="max-h-[85vh] max-w-full object-contain rounded-lg shadow-2xl" />
+        {images.length > 1 && (
+          <div className="mt-6 flex gap-3">
+            {images.map((_, i) => (
+              <button key={i} onClick={() => setIdx(i)} className={`w-3 h-3 rounded-full transition-all ${i === idx ? 'bg-medblue-bright w-8' : 'bg-slate-700'}`} />
+            ))}
           </div>
-          
-          {/* Image Caption/Counter */}
-          {images.length > 1 && (
-             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-1 text-sm text-white/90 backdrop-blur-sm">
-                {currentIndex + 1} / {images.length}
-             </div>
-          )}
-
-        </motion.div>
+        )}
       </div>
-    </AnimatePresence>,
+    </div>,
+    document.body
+  )
+}
+
+// Video Modal
+function VideoModal({ videoSrc, isOpen, onClose }) {
+  if (!isOpen || !videoSrc) return null
+  return createPortal(
+    <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/95 p-4" onClick={onClose}>
+      <div className="relative max-w-5xl w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-slate-800" onClick={e => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-4 right-4 z-20 bg-black/50 p-2 rounded-full text-white/70 hover:text-white hover:bg-black/80 transition">
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <video 
+            src={videoSrc} 
+            className="w-full h-full" 
+            controls 
+            autoPlay
+            playsInline
+            controlsList="nodownload"
+            onContextMenu={(e) => e.preventDefault()}
+            disablePictureInPicture
+        />
+      </div>
+    </div>,
     document.body
   )
 }
@@ -305,11 +216,9 @@ function ImageModal({ images, initialIndex = 0, isOpen, onClose }) {
 function ProjectItem({ project }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false)
-  
-  // 모달에 전달할 이미지 목록 (썸네일 클릭 시와 샘플 클릭 시 다르게 설정)
-  const [modalImages, setModalImages] = useState([])
-  const [modalInitialIndex, setModalInitialIndex] = useState(0)
+  const [isImgOpen, setIsImgOpen] = useState(false)
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
+  const [modalImgs, setModalImgs] = useState([])
 
   const nextImage = (e) => {
     e.stopPropagation()
@@ -329,19 +238,8 @@ function ProjectItem({ project }) {
   const handleThumbnailClick = (e) => {
     e.stopPropagation()
     if (project.images && project.images.length > 0) {
-      setModalImages(project.images)
-      setModalInitialIndex(currentImageIndex)
-      setIsImageModalOpen(true)
-    }
-  }
-
-  // 샘플보기 클릭 핸들러
-  const handleSampleClick = (e) => {
-    e.stopPropagation()
-    if (project.sampleImages && project.sampleImages.length > 0) {
-      setModalImages(project.sampleImages)
-      setModalInitialIndex(0)
-      setIsImageModalOpen(true)
+      setModalImgs(project.images)
+      setIsImgOpen(true)
     }
   }
 
@@ -357,12 +255,21 @@ function ProjectItem({ project }) {
         <header className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
           <h3 className="text-xl font-semibold text-slate-100">{project.title}</h3>
           <div className="flex gap-4 text-sm font-medium text-medblue-bright">
-            {project.sampleImages && project.sampleImages.length > 0 && (
-              <button
-                onClick={handleSampleClick}
-                className="inline-flex items-center gap-1 text-medblue-bright transition hover:text-medblue-soft underline underline-offset-4"
+            {project.demoVideo && (
+              <button 
+                onClick={() => setIsVideoOpen(true)}
+                className="hover:text-white flex items-center gap-1 transition-colors animate-pulse"
               >
-                샘플보기 ↗
+                <span className="w-2 h-2 rounded-full bg-red-500 mr-1"></span>
+                Demo Video ▷
+              </button>
+            )}
+            {project.sampleImages && (
+              <button 
+                onClick={() => { setModalImgs(project.sampleImages); setIsImgOpen(true); }}
+                className="hover:text-medblue-soft underline underline-offset-4"
+              >
+                Sample View
               </button>
             )}
             {project.links.demo && (
@@ -388,6 +295,7 @@ function ProjectItem({ project }) {
           </div>
         </header>
 
+        {/* Image Carousel */}
         {project.images && project.images.length > 0 && (
           <div className="relative mt-6 overflow-hidden rounded-2xl bg-slate-950/50 border border-slate-800/50">
             <div className="relative aspect-video">
@@ -397,6 +305,8 @@ function ProjectItem({ project }) {
                 className="w-full h-full object-contain cursor-zoom-in"
                 onClick={handleThumbnailClick}
               />
+
+              {/* Navigation Arrows */}
               {project.images.length > 1 && (
                 <>
                   <button
@@ -419,12 +329,16 @@ function ProjectItem({ project }) {
                   </button>
                 </>
               )}
+
+              {/* Image Caption */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-950/90 to-transparent px-6 py-4 pointer-events-none">
                 <p className="text-sm font-medium text-slate-300">
                   {project.images[currentImageIndex].caption}
                 </p>
               </div>
             </div>
+
+            {/* Dot Indicators */}
             {project.images.length > 1 && (
               <div className="flex justify-center gap-2 py-3">
                 {project.images.map((_, index) => (
@@ -474,6 +388,7 @@ function ProjectItem({ project }) {
         </div>
       </motion.article>
 
+      {/* Detail Modal */}
       {project.details && (
         <ProjectModal 
           project={project} 
@@ -482,11 +397,18 @@ function ProjectItem({ project }) {
         />
       )}
 
+      {/* Image Modal */}
       <ImageModal
-        images={modalImages}
-        initialIndex={modalInitialIndex}
-        isOpen={isImageModalOpen}
-        onClose={() => setIsImageModalOpen(false)}
+        images={modalImgs}
+        isOpen={isImgOpen}
+        onClose={() => setIsImgOpen(false)}
+      />
+
+      {/* Video Modal */}
+      <VideoModal 
+        videoSrc={project.demoVideo} 
+        isOpen={isVideoOpen} 
+        onClose={() => setIsVideoOpen(false)} 
       />
     </>
   )

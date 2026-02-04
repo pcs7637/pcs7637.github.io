@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import Projects from './pages/Projects.jsx'
-import About, { ExperienceSection, SkillsSection } from './pages/About.jsx'
+import About, { SkillsSection } from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import Journey from './pages/Journey.jsx'
 
@@ -9,13 +9,11 @@ const navItems = [
   { id: 'about', label: 'About' },
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
-  { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ]
 
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/pcs7637' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/pcs7637' },
   { label: 'Email', href: 'mailto:pcs7637@gmail.com' },
 ]
 
@@ -306,7 +304,6 @@ export default function App() {
             </section>
             <About onNavigateToJourney={handleNavigateToJourney} />
             <Projects />
-            <ExperienceSection />
             <SkillsSection />
             <Contact />
           </main>

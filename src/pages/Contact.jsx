@@ -7,11 +7,6 @@ const channels = [
     value: 'pcs7637@gmail.com',
   },
   {
-    heading: 'LinkedIn',
-    description: '경력과 프로젝트 하이라이트를 빠르게 확인할 수 있습니다.',
-    value: 'linkedin.com/in/pcs7637',
-  },
-  {
     heading: 'GitHub',
     description: '코드 히스토리와 프로젝트를 공개합니다.',
     value: 'github.com/pcs7637',
@@ -29,7 +24,7 @@ export default function Contact() {
     <section id="contact" className="scroll-mt-24 space-y-10">
       <header className="space-y-2">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">05</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">04</span>
           <h2 className="text-3xl font-semibold text-slate-50">Contact</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
