@@ -60,26 +60,6 @@ export default function Contact() {
           </motion.div>
         ))}
       </div>
-
-      <motion.div
-        className="rounded-3xl border border-medblue-bright/20 bg-gradient-to-r from-medblue-dark/20 via-medblue/15 to-medblue-soft/10 p-[1px]"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <div className="rounded-[calc(theme(borderRadius.3xl)-1px)] bg-slate-950/80 p-8">
-          <h3 className="text-base font-semibold text-medblue-bright">가능한 협업 형태</h3>
-          <ul className="mt-4 space-y-3 text-sm text-slate-300">
-            {availability.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <span className="mt-[7px] inline-block h-1.5 w-1.5 rounded-full bg-medblue-bright/80" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </motion.div>
     </section>
   )
 }

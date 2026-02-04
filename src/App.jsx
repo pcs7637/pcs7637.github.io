@@ -306,8 +306,8 @@ export default function App() {
             </section>
             <About onNavigateToJourney={handleNavigateToJourney} />
             <Projects />
-            <SkillsSection />
             <ExperienceSection />
+            <SkillsSection />
             <Contact />
           </main>
         </div>

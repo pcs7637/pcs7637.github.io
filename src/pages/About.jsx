@@ -33,68 +33,26 @@ const timeline = [
   },
 ]
 
-const customIcons = {
-  jupyter: { src: '/assets/Jupyter_logo.svg.png', label: 'Jupyter' },
-  numpy: { src: '/assets/numpy.svg', label: 'NumPy' },
-  pandas: { src: '/assets/Pandas_logo.svg.png', label: 'Pandas' },
-  jwt: { src: '/assets/jwt.png', label: 'JWT' },
-  windsurf: { src: '/assets/windsurf.svg', label: 'Windsurf' },
-  finalcut: { src: '/assets/final-cut-pro-logo.png', label: 'Final Cut Pro' },
-  miricanvas: { src: '/assets/miricanvas.png', label: 'MiriCanvas' },
-  suno: { src: '/assets/suno-app-icon.png', label: 'Suno AI' },
-  canva: { src: '/assets/canva.png', label: 'Canva' },
-  mariadb: { src: '/assets/mariadb.png', label: 'MariaDB' },
-}
-
 const skills = [
   {
-    category: 'AI · ML',
-    items: [
-      { type: 'icon', value: 'python', label: 'Python' },
-      { type: 'icon', value: 'r', label: 'R' },
-      { type: 'custom', value: 'jupyter', label: 'Jupyter' },
-      { type: 'icon', value: 'tensorflow', label: 'TensorFlow' },
-      { type: 'icon', value: 'pytorch', label: 'PyTorch' },
-      { type: 'custom', value: 'numpy', label: 'NumPy' },
-      { type: 'custom', value: 'pandas', label: 'Pandas' },
-      { type: 'icon', value: 'scikitlearn', label: 'scikit-learn' },
-      { type: 'icon', value: 'opencv', label: 'OpenCV' },
-    ],
+    category: 'Languages',
+    items: ['Python', 'R'],
   },
   {
-    category: 'Supporting Skills',
-    items: [
-      { type: 'icon', value: 'html', label: 'HTML' },
-      { type: 'icon', value: 'css', label: 'CSS' },
-      { type: 'icon', value: 'bootstrap', label: 'Bootstrap' },
-      { type: 'icon', value: 'django', label: 'Django' },
-      { type: 'icon', value: 'react', label: 'React' },
-      { type: 'icon', value: 'mysql', label: 'MySQL' },
-      { type: 'custom', value: 'mariadb', label: 'MariaDB' },
-    ],
+    category: 'Medical Data',
+    items: ['DICOM', 'NIfTI', 'EMR', 'Vital'],
   },
   {
-    category: 'DevOps · Tools',
-    items: [
-      { type: 'icon', value: 'git', label: 'Git' },
-      { type: 'icon', value: 'github', label: 'GitHub' },
-      { type: 'icon', value: 'vscode', label: 'VS Code' },
-      { type: 'icon', value: 'pycharm', label: 'PyCharm' },
-      { type: 'icon', value: 'nodejs', label: 'Node.js' },
-      { type: 'icon', value: 'npm', label: 'npm' },
-      { type: 'icon', value: 'bash', label: 'Bash' },
-      { type: 'custom', value: 'windsurf', label: 'Windsurf' },
-    ],
+    category: 'ML / AI',
+    items: ['PyTorch', 'LightGBM', 'XGBoost', 'SHAP'],
   },
   {
-    category: 'Creative · Media',
-    items: [
-      { type: 'custom', value: 'finalcut', label: 'Final Cut Pro' },
-      { type: 'icon', value: 'aftereffects', label: 'After Effects' },
-      { type: 'custom', value: 'canva', label: 'Canva' },
-      { type: 'custom', value: 'miricanvas', label: 'MiriCanvas' },
-      { type: 'custom', value: 'suno', label: 'Suno AI' },
-    ],
+    category: 'System Design',
+    items: ['Pipeline Automation', 'Config-driven Workflow'],
+  },
+  {
+    category: 'Tools',
+    items: ['Git', 'Docker', 'CLI-based Execution'],
   },
 ]
 
@@ -103,7 +61,7 @@ export function ExperienceSection() {
     <section id="experience" className="scroll-mt-24 space-y-8">
       <header className="space-y-2">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">04</span>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">03</span>
           <h2 className="text-3xl font-semibold text-slate-50">Experience</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
@@ -143,78 +101,39 @@ export function ExperienceSection() {
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="scroll-mt-24 space-y-4">
+    <section id="skills" className="scroll-mt-24 space-y-6">
       <header className="space-y-2">
         <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">03</span>
-          <h2 className="text-3xl font-semibold text-slate-50">Skills</h2>
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-medblue-bright">04</span>
+          <h2 className="text-3xl font-semibold text-slate-50">Core Stack</h2>
         </div>
         <p className="max-w-2xl text-sm leading-relaxed text-slate-400">
-          의료 AI 연구 및 데이터 파이프라인 구축을 위해 활용하는 기술 스택입니다.
+          Core Stack (Used in Projects)
         </p>
       </header>
 
-      <div className="grid gap-2 grid-cols-1">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {skills.map((skill) => (
           <motion.div
             key={skill.category}
-            className="rounded-3xl border border-slate-800/70 bg-slate-900/60 p-4"
-            initial={{ opacity: 0, y: 40 }}
+            className="rounded-2xl border border-slate-800/50 bg-slate-900/40 p-5"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            <h3 className="text-base font-semibold text-slate-200">{skill.category}</h3>
-            <div className="mt-2 flex flex-wrap gap-4">
-              {skill.items.map((item) => {
-                const key = item.value ?? item.label
-                const displayLabel = item.label ?? customIcons[item.value]?.label ?? item.value
-
-                // content가 직접 정의된 경우 (MariaDB 같은 특수 케이스)
-                if (item.content) {
-                  return <div key={key}>{item.content}</div>
-                }
-
-                if (item.type === 'icon') {
-                  return (
-                    <div key={key} className="skill-item">
-                      <span className="skill-icon">
-                        <img
-                          src={`https://skillicons.dev/icons?i=${item.value}`}
-                          alt={displayLabel}
-                          className="skill-icon__img"
-                          loading="lazy"
-                        />
-                      </span>
-                      <span className="skill-label">{displayLabel}</span>
-                    </div>
-                  )
-                }
-
-                if (item.type === 'custom') {
-                  const custom = customIcons[item.value]
-                  if (!custom) return null
-                  return (
-                    <div key={key} className="skill-item">
-                      <span className="skill-icon skill-icon--custom">
-                        <img
-                          src={custom.src}
-                          alt={displayLabel}
-                          className="skill-icon__img"
-                          loading="lazy"
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMTEuOTk5IDFjLTIuMjE3IDAtNC4zMzQuMzU4LTYuMjUxLjk5NnYxOS4zM2MxLjg5LS42MTYgMy43NDItLjk5IDUuNzY0LS45OSAzLjQ3OCAwIDEwLjU2NiAyLjgxMyAxMC41NjYgMy4yNTMgMCAuNDQxLTUuMDg4IDMuNzM3LTEwLjU2NiAzLjczNy0yLjAyIDAtMy44NzUtLjM3NC01Ljc2NS0uOTl2LTE5LjMzdjEuODg5LjYxNiAzLjc0My45OSA1Ljc2NS45OWguMDEzYzEuNzIzIDAgMy4yNzMtLjM0IDUuMTU0LS42ODYuMTEzLjAwNi4yMjYuMDEyLjM0Mi4wMTIgMi4yMTcgMCA0LjMzNC4zNTggNi4yNTEuOTk2djE5LjMzYy0xLjg5LS42MTYtMy43NDItLjk5LTUuNzY0LS45OS01LjQ3OCAwLTEwLjU2NiAyLjgxMy0xMC41NjYgMy4yNTMgMCAuNDQxIDUuMDg4IDMuNzM3IDEwLjU2NiAzLjczNyAyLjAyMSAwIDMuODc1LS4zNzQgNS43NjUtLjk5VjEuOTk2Yy0xLjg4OS42MTYtMy43NDMuOTktNS43NjUuOTloLS4wMTNjLTEuNzIzIDAtMy4yNzMtLjM0LTUuMTU0LS42ODYtLjExMy4wMDYtLjIyNi4wMTItLjM0Mi4wMTJaIi8+PC9zdmc+';
-                          }}
-                        />
-                      </span>
-                      <span className="skill-label">{displayLabel}</span>
-                    </div>
-                  )
-                }
-
-                return null
-              })}
+            <h3 className="text-[10px] font-bold uppercase tracking-widest text-medblue-soft/70 mb-3">
+              {skill.category}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {skill.items.map((item) => (
+                <span
+                  key={item}
+                  className="px-3 py-1 text-[11px] font-medium rounded-full bg-slate-800/40 text-slate-300 border border-slate-700/30 hover:border-medblue-soft/50 transition-colors"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           </motion.div>
         ))}
