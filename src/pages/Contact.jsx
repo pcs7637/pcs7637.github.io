@@ -13,12 +13,6 @@ const channels = [
   },
 ]
 
-const availability = [
-  '의료 AI 연구실 포지션',
-  '의료 데이터 기반 ML 모델링·전처리 프로젝트',
-  'EMR/의료영상 데이터 파이프라인 구축',
-]
-
 export default function Contact() {
   return (
     <section id="contact" className="scroll-mt-24 space-y-10">

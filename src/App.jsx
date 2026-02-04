@@ -137,7 +137,7 @@ export default function App() {
   return (
     <>
       {!hasEntered && (
-        <div className="fixed inset-0 z-50 overflow-hidden">
+        <div className="fixed inset-0 z-50 overflow-hidden bg-slate-950">
             <video
               className="absolute inset-0 h-full w-full object-cover"
               src="/assets/List-16-9.mp4"
