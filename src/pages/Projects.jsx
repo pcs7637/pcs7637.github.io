@@ -63,7 +63,7 @@ const projectGroups = [
         },
         images: [
           {
-            src: '/assets/Prostate Cancer Biopsy Targeting CDSS_t.png',
+            src: '/assets/Prostate Cancer Biopsy Targeting CDSS_t2.png',
             alt: 'Prostate Cancer Biopsy Targeting CDSS Thumbnail',
             caption: 'On-Premise AI Pipeline & RAG Workflow'
           }
