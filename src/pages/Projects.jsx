@@ -28,7 +28,7 @@ const projectGroups = [
 이 프로젝트를 통해, 의료 영상 AI에서 중요한 것은 “더 복잡한 모델”이 아니라 모델이 신뢰할 수 있는 입력을 받도록 만드는 데이터 흐름임을 확인했습니다. 본 프로젝트는 유방암이라는 특정 질환을 넘어, 신장암·전립선암 등 다른 3D 의료 영상 도메인에도 그대로 확장 가능한 파이프라인 구조를 목표로 설계되었습니다.`,
         tags: ['Python', 'PyTorch', 'MONAI', 'DICOM', 'NIfTI', '3D Medical Imaging', 'Pipeline Automation'],
         links: {
-          repo: 'https://github.com/nogeonu/medical-cdss-system', 
+          repo: 'https://github.com/nogeonu/medical-cdss-system',
         },
         images: [
           {
@@ -58,8 +58,9 @@ const projectGroups = [
 [Key Insight]
 이 프로젝트를 통해, 의료 AI의 핵심 가치는 단순한 세그멘테이션 정확도(Dice Score)가 아니라, **“조직검사를 위해 놓치지 않는 후보 제시(High Recall)”**와 **“시스템적 안정성”**이 결합된 워크플로우 통합에 있음을 확인했습니다. 또한 본 파이프라인은 전립선암을 넘어 신장암(Kidney) 등 타 장기로 즉시 확장 가능한 Config-driven 구조로 설계되어, 의료 AI 플랫폼으로서의 확장 가능성을 입증했습니다.`,
         tags: ['Python', 'PyTorch', 'MONAI', 'Django', 'FastAPI', 'Docker', 'MinIO', 'PostgreSQL', 'Orthanc', 'RAG'],
+        pdf: '/assets/MANISIDE_EndtoEnd_AI_CDSS_Platform.pdf',
         links: {
-          repo: 'https://github.com/pcs7637/Prostate-AI-Worker', 
+          repo: 'https://github.com/pcs7637/Prostate-AI-Worker',
         },
         images: [
           {
@@ -69,7 +70,7 @@ const projectGroups = [
           }
         ],
         sampleImages: [
-           { src: '/assets/unified_test_sample_21.png', alt: 'Sample Output' }
+          { src: '/assets/unified_test_sample_21.png', alt: 'Sample Output' }
         ]
       },
       {
@@ -96,9 +97,9 @@ const projectGroups = [
         },
         images: [
           {
-             src: '/assets/Kidney Tumor Segmentation & Efficient AI Pipeline_t.png',
-             alt: 'Kidney Tumor Segmentation Thumbnail',
-             caption: 'Efficient 2-Stage Pipeline on Limited Hardware'
+            src: '/assets/Kidney Tumor Segmentation & Efficient AI Pipeline_t.png',
+            alt: 'Kidney Tumor Segmentation Thumbnail',
+            caption: 'Efficient 2-Stage Pipeline on Limited Hardware'
           }
         ],
         sampleImages: [
@@ -161,18 +162,18 @@ function ProjectModal({ project, isOpen, onClose }) {
 // Lightbox for Images
 function ImageModal({ images, isOpen, onClose }) {
   const [idx, setIdx] = useState(0)
-  
+
   useEffect(() => {
     if (isOpen) setIdx(0) // Reset index on open
   }, [isOpen])
 
   if (!isOpen || !images) return null
-  
+
   return createPortal(
     <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/95 p-4" onClick={onClose}>
       <div className="relative max-w-5xl w-full flex flex-col items-center" onClick={e => e.stopPropagation()}>
         <button onClick={onClose} className="absolute -top-12 right-0 text-white/70 hover:text-white transition">
-            <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
         <img src={images[idx].src} className="max-h-[85vh] max-w-full object-contain rounded-lg shadow-2xl" />
         {images.length > 1 && (
@@ -195,17 +196,17 @@ function VideoModal({ videoSrc, isOpen, onClose }) {
     <div className="fixed inset-0 z-[110] flex items-center justify-center bg-slate-950/95 p-4" onClick={onClose}>
       <div className="relative max-w-5xl w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-slate-800" onClick={e => e.stopPropagation()}>
         <button onClick={onClose} className="absolute top-4 right-4 z-20 bg-black/50 p-2 rounded-full text-white/70 hover:text-white hover:bg-black/80 transition">
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
-        <video 
-            src={videoSrc} 
-            className="w-full h-full" 
-            controls 
-            autoPlay
-            playsInline
-            controlsList="nodownload"
-            onContextMenu={(e) => e.preventDefault()}
-            disablePictureInPicture
+        <video
+          src={videoSrc}
+          className="w-full h-full"
+          controls
+          autoPlay
+          playsInline
+          controlsList="nodownload"
+          onContextMenu={(e) => e.preventDefault()}
+          disablePictureInPicture
         />
       </div>
     </div>,
@@ -237,6 +238,13 @@ function ProjectItem({ project }) {
   // 썸네일 이미지 클릭 핸들러
   const handleThumbnailClick = (e) => {
     e.stopPropagation()
+
+    // PDF가 있는 경우 새 탭에서 열기
+    if (project.pdf) {
+      window.open(project.pdf, '_blank')
+      return
+    }
+
     if (project.images && project.images.length > 0) {
       setModalImgs(project.images)
       setIsImgOpen(true)
@@ -256,7 +264,7 @@ function ProjectItem({ project }) {
           <h3 className="text-xl font-semibold text-slate-100">{project.title}</h3>
           <div className="flex gap-4 text-sm font-medium text-medblue-bright">
             {project.demoVideo && (
-              <button 
+              <button
                 onClick={() => setIsVideoOpen(true)}
                 className="hover:text-white flex items-center gap-1 transition-colors animate-pulse"
               >
@@ -265,7 +273,7 @@ function ProjectItem({ project }) {
               </button>
             )}
             {project.sampleImages && (
-              <button 
+              <button
                 onClick={() => { setModalImgs(project.sampleImages); setIsImgOpen(true); }}
                 className="hover:text-medblue-soft underline underline-offset-4"
               >
@@ -283,14 +291,14 @@ function ProjectItem({ project }) {
               </a>
             )}
             {project.links.repo && (
-               <a
-               href={project.links.repo}
-               className="inline-flex items-center gap-1 text-slate-400 transition hover:text-medblue-soft"
-               target="_blank"
-               rel="noreferrer"
-             >
-               GitHub ↗
-             </a>
+              <a
+                href={project.links.repo}
+                className="inline-flex items-center gap-1 text-slate-400 transition hover:text-medblue-soft"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub ↗
+              </a>
             )}
           </div>
         </header>
@@ -349,8 +357,8 @@ function ProjectItem({ project }) {
                       setCurrentImageIndex(index);
                     }}
                     className={`h-2 rounded-full transition-all ${index === currentImageIndex
-                        ? 'w-8 bg-medblue-bright'
-                        : 'w-2 bg-slate-700 hover:bg-slate-600'
+                      ? 'w-8 bg-medblue-bright'
+                      : 'w-2 bg-slate-700 hover:bg-slate-600'
                       }`}
                     aria-label={`Go to image ${index + 1}`}
                   />
@@ -375,7 +383,7 @@ function ProjectItem({ project }) {
             </svg>
           </button>
         )}
-        
+
         <div className="mt-5 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
@@ -390,10 +398,10 @@ function ProjectItem({ project }) {
 
       {/* Detail Modal */}
       {project.details && (
-        <ProjectModal 
-          project={project} 
-          isOpen={isModalOpen} 
-          onClose={() => setIsModalOpen(false)} 
+        <ProjectModal
+          project={project}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
         />
       )}
 
@@ -405,10 +413,10 @@ function ProjectItem({ project }) {
       />
 
       {/* Video Modal */}
-      <VideoModal 
-        videoSrc={project.demoVideo} 
-        isOpen={isVideoOpen} 
-        onClose={() => setIsVideoOpen(false)} 
+      <VideoModal
+        videoSrc={project.demoVideo}
+        isOpen={isVideoOpen}
+        onClose={() => setIsVideoOpen(false)}
       />
     </>
   )
